@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { auth, currentUser } from '@clerk/nextjs/server';
-import { SignedIn, SignOutButton, UserButton } from '@clerk/nextjs';
+import { SignedIn, UserButton } from '@clerk/nextjs';
 
 async function Dashboard() {
   const { userId } = auth();
