@@ -9,7 +9,6 @@ type Size = 'regular' | 'large';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
-  onClick: () => void;
   children: ReactNode;
 }
 
@@ -32,13 +31,12 @@ const Button: FC<ButtonProps> = ({
   variant = 'primary',
   size = 'regular',
   children,
-  onClick,
   ...props
 }) => {
   const classes = clsx(baseStyles, variantStyles[variant], sizeStyles[size]);
 
   return (
-    <button className={classes} onClick={onClick} {...props}>
+    <button className={classes} {...props}>
       {children}
     </button>
   );
