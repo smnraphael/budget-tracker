@@ -5,22 +5,23 @@ import styles from './emoji-background.module.css';
 
 const EmojiBackground: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const emojis: string[] = [
-    '💸',
-    '💰',
-    '💵',
-    '💶',
-    '💷',
-    '💴',
-    '🤑',
-    '📈',
-    '📉',
-    '🚀',
-    '💳',
-    '💎',
-  ];
 
   useEffect(() => {
+    const emojis: string[] = [
+      '💸',
+      '💰',
+      '💵',
+      '💶',
+      '💷',
+      '💴',
+      '🤑',
+      '📈',
+      '📉',
+      '🚀',
+      '💳',
+      '💎',
+    ];
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -79,7 +80,7 @@ const EmojiBackground: React.FC = () => {
         }
       });
     };
-  }, [emojis]);
+  }, []);
 
   return <div ref={containerRef} className={styles.container}></div>;
 };
