@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { SignedIn, UserButton } from '@clerk/nextjs';
 import { addUserToDatabase } from '@/services/userService';
+import AddExpenseForm from '../components/add-expense-form';
+import AddIncomeForm from '../components/add-income-form';
 
 async function Dashboard() {
   const { userId } = auth();
@@ -24,6 +26,10 @@ async function Dashboard() {
       <SignedIn>
         <UserButton />
       </SignedIn>
+      <h1>Expense</h1>
+      <AddExpenseForm />
+      <h1>Income</h1>
+      <AddIncomeForm />
     </div>
   );
 }
