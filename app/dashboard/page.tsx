@@ -4,6 +4,7 @@ import { SignedIn, UserButton } from '@clerk/nextjs';
 import { addUserToDatabase } from '@/services/userService';
 import AddExpenseForm from '../components/add-expense-form';
 import AddIncomeForm from '../components/add-income-form';
+import Transactions from '../components/transactions';
 
 async function Dashboard() {
   const { userId } = auth();
@@ -30,6 +31,7 @@ async function Dashboard() {
       <AddExpenseForm />
       <h1>Income</h1>
       <AddIncomeForm />
+      <Transactions />
     </div>
   );
 }
