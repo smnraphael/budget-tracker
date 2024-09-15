@@ -12,18 +12,14 @@ function AddIncomeForm() {
   const [date, setDate] = useState('');
   const [categoryId, setCategoryId] = useState('');
 
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch('/api/categories/incomes');
-      const data = await response.json();
-      const incomeCategories = data.filter(
-        (category: { type: string }) => category.type === 'income'
-      );
-      setCategories(incomeCategories);
-    }
-
-    fetchCategories();
-  }, []);
+  async function fetchCategories() {
+    const response = await fetch('/api/categories/incomes');
+    const data = await response.json();
+    const incomeCategories = data.filter(
+      (category: { type: string }) => category.type === 'income'
+    );
+    setCategories(incomeCategories);
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +47,10 @@ function AddIncomeForm() {
       alert(result.message || 'Error adding transaction');
     }
   };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>

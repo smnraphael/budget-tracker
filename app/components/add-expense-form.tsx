@@ -12,18 +12,14 @@ function AddExpenseForm() {
   const [date, setDate] = useState('');
   const [categoryId, setCategoryId] = useState('');
 
-  useEffect(() => {
-    async function fetchCategories() {
-      const response = await fetch('/api/categories/expenses');
-      const data = await response.json();
-      const expenseCategories = data.filter(
-        (category: { type: string }) => category.type === 'expense'
-      );
-      setCategories(expenseCategories);
-    }
-
-    fetchCategories();
-  }, []);
+  async function fetchCategories() {
+    const response = await fetch('/api/categories/expenses');
+    const data = await response.json();
+    const expenseCategories = data.filter(
+      (category: { type: string }) => category.type === 'expense'
+    );
+    setCategories(expenseCategories);
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +47,10 @@ function AddExpenseForm() {
       alert(result.message || 'Error adding transaction');
     }
   };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>

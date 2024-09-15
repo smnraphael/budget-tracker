@@ -17,17 +17,33 @@ interface TransactionType {
 export default function Transactions() {
   const [transactions, setTransactions] = useState<TransactionType[]>([]);
 
-  useEffect(() => {
-    async function fetchTransactions() {
-      const response = await fetch('/api/transactions/get');
-      if (response.ok) {
-        const transactionsData = await response.json();
-        setTransactions(transactionsData);
-      } else {
-        console.error('Error fetching transactions');
-      }
+  async function fetchTransactions() {
+    const response = await fetch('/api/transactions/get');
+    if (response.ok) {
+      const transactionsData = await response.json();
+      setTransactions(transactionsData);
+    } else {
+      console.error('Error fetching transactions');
     }
+  }
 
+  const handleDelete = async (id: string) => {
+    const response = await fetch(`/api/transactions/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      alert('Transaction deleted successfully');
+      setTransactions(
+        transactions.filter((transaction) => transaction.id !== id)
+      );
+    } else {
+      const result = await response.json();
+      alert(result.message || 'Error deleting transaction');
+    }
+  };
+
+  useEffect(() => {
     fetchTransactions();
   }, []);
 
@@ -45,6 +61,9 @@ export default function Transactions() {
               {decryptedDescription} - ${decryptedAmount} -{' '}
               {transaction.category.name} - {transaction.category.type} -{' '}
               {formattedDate}
+              <button onClick={() => handleDelete(transaction.id)}>
+                Delete
+              </button>
             </li>
           );
         })}
