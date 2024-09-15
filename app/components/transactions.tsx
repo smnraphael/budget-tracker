@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { decryptData } from '../utils/cryptoUtils';
 
 interface TransactionType {
   id: string;
@@ -52,13 +51,11 @@ export default function Transactions() {
       <h1>Your Transactions</h1>
       <ul>
         {transactions.map((transaction) => {
-          const decryptedDescription = decryptData(transaction.description);
-          const decryptedAmount = decryptData(transaction.amount);
           const date = new Date(transaction.date);
           const formattedDate = date.toISOString().split('T')[0];
           return (
             <li key={transaction.id}>
-              {decryptedDescription} - {decryptedAmount}€ -{' '}
+              {transaction.description} - {transaction.amount}€ -{' '}
               {transaction.category.name} - {transaction.category.type} -{' '}
               {formattedDate}
               <button onClick={() => handleDelete(transaction.id)}>

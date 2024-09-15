@@ -37,6 +37,15 @@ export async function POST(request: Request) {
     // Convert date to ISO-8601 format
     const formattedDate = new Date(date).toISOString();
 
+    // Determine amount change based on category type
+    const amountNumber = parseFloat(amount);
+    if (isNaN(amountNumber)) {
+      return NextResponse.json({ message: 'Invalid amount' }, { status: 400 });
+    }
+
+    const amountChange =
+      category.type === 'income' ? amountNumber : -amountNumber;
+
     // Create transaction
     const transaction = await prisma.transaction.create({
       data: {
@@ -48,7 +57,20 @@ export async function POST(request: Request) {
       },
     });
 
-    return NextResponse.json(transaction);
+    // Update user balance
+    const decryptedBalance = parseFloat(user.balance);
+    if (isNaN(decryptedBalance)) {
+      return NextResponse.json({ message: 'Invalid balance' }, { status: 400 });
+    }
+
+    const updatedBalance = decryptedBalance + amountChange;
+
+    await prisma.user.update({
+      where: { clerkId: userId },
+      data: { balance: updatedBalance.toFixed(2) },
+    });
+
+    return NextResponse.json({ transaction });
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Error creating transaction:', error.message);

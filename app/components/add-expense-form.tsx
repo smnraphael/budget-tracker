@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { encryptData } from '../utils/cryptoUtils';
 
 function AddExpenseForm() {
   const [categories, setCategories] = useState<{ id: string; name: string }[]>(
@@ -24,14 +23,11 @@ function AddExpenseForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const encryptedDescription = encryptData(description);
-    const encryptedAmount = encryptData(amount);
-
     const transactionData = {
-      amount: encryptedAmount,
+      amount,
       categoryId,
       date,
-      description: encryptedDescription,
+      description,
     };
 
     const response = await fetch('/api/transactions/post', {
