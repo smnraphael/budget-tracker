@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
+import { decryptData, encryptData } from '@/app/utils/cryptoUtils';
 
 export async function DELETE(request: Request) {
   try {
@@ -34,6 +35,7 @@ export async function DELETE(request: Request) {
     // Find transaction to delete
     const transaction = await prisma.transaction.findUnique({
       where: { id },
+      include: { category: true },
     });
 
     if (!transaction) {
@@ -47,6 +49,39 @@ export async function DELETE(request: Request) {
     if (transaction.userId !== user.id) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 403 });
     }
+
+    // Decrypt transaction amount
+    const decryptedAmount = parseFloat(decryptData(transaction.amount));
+    if (isNaN(decryptedAmount)) {
+      return NextResponse.json(
+        { message: 'Invalid transaction amount' },
+        { status: 400 }
+      );
+    }
+
+    // Determine balance adjustment based on transaction type
+    const amountChange =
+      transaction.category.type === 'income'
+        ? -decryptedAmount
+        : decryptedAmount;
+
+    // Decrypt user balance
+    const decryptedBalance = parseFloat(decryptData(user.balance));
+    if (isNaN(decryptedBalance)) {
+      return NextResponse.json({ message: 'Invalid balance' }, { status: 400 });
+    }
+
+    // Update user balance
+    const updatedBalance = decryptedBalance + amountChange;
+
+    // Encrypt updated balance before storing
+    const encryptedUpdatedBalance = encryptData(updatedBalance.toString());
+
+    // Update user balance in database
+    await prisma.user.update({
+      where: { clerkId: userId },
+      data: { balance: encryptedUpdatedBalance },
+    });
 
     // Delete transaction
     await prisma.transaction.delete({

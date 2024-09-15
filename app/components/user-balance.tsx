@@ -20,7 +20,7 @@ function UserBalance() {
     fetchBalance();
   }, []);
 
-  return <p>Current balance: {balance}€</p>;
+  return <p>Current balance: {Number(balance).toFixed(2)}€</p>;
 }
 
 export default UserBalance;

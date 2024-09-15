@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
-import { encryptData } from '@/app/utils/cryptoUtils';
+import { encryptData, decryptData } from '@/app/utils/cryptoUtils';
 
 export async function POST(request: Request) {
   try {
@@ -38,17 +38,18 @@ export async function POST(request: Request) {
     // Convert date to ISO-8601 format
     const formattedDate = new Date(date).toISOString();
 
-    // Determine amount change based on category type
+    // Format and validate amount
     const amountNumber = parseFloat(amount);
     if (isNaN(amountNumber)) {
       return NextResponse.json({ message: 'Invalid amount' }, { status: 400 });
     }
 
+    // Determine balance adjustment based on transaction type
     const amountChange =
       category.type === 'income' ? amountNumber : -amountNumber;
 
     // Encrypt amount and description
-    const encryptedAmount = encryptData(amount.toString());
+    const encryptedAmount = encryptData(amountNumber.toString());
     const encryptedDescription = encryptData(description);
 
     // Create transaction
@@ -62,17 +63,21 @@ export async function POST(request: Request) {
       },
     });
 
-    // Update user balance
-    const currentBalance = parseFloat(user.balance);
-    if (isNaN(currentBalance)) {
+    // Decrypt user balance
+    const decryptedBalance = parseFloat(decryptData(user.balance));
+    if (isNaN(decryptedBalance)) {
       return NextResponse.json({ message: 'Invalid balance' }, { status: 400 });
     }
 
-    const updatedBalance = currentBalance + amountChange;
+    // Update user balance
+    const updatedBalance = decryptedBalance + amountChange;
+
+    // Encrypt updated balance before storing
+    const encryptedUpdatedBalance = encryptData(updatedBalance.toString());
 
     await prisma.user.update({
       where: { clerkId: userId },
-      data: { balance: updatedBalance.toFixed(2) },
+      data: { balance: encryptedUpdatedBalance },
     });
 
     return NextResponse.json({ transaction });
