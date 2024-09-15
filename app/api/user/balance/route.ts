@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
-import { decryptData } from '@/app/utils/cryptoUtils';
 
 export async function GET() {
   try {
@@ -25,11 +24,8 @@ export async function GET() {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
 
-    // Decrypt user's balance
-    const decryptedBalance = decryptData(user.balance);
-
     // Return user's balance
-    return NextResponse.json({ balance: decryptedBalance });
+    return NextResponse.json({ balance: user.balance });
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Error fetching balance:', error.message);
