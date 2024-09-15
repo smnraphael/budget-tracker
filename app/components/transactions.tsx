@@ -58,7 +58,7 @@ export default function Transactions() {
           const formattedDate = date.toISOString().split('T')[0];
           return (
             <li key={transaction.id}>
-              {decryptedDescription} - ${decryptedAmount} -{' '}
+              {decryptedDescription} - {decryptedAmount}€ -{' '}
               {transaction.category.name} - {transaction.category.type} -{' '}
               {formattedDate}
               <button onClick={() => handleDelete(transaction.id)}>
