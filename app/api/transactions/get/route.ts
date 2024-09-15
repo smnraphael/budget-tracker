@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
+import { decryptData } from '@/app/utils/cryptoUtils';
 
 export async function GET() {
   try {
@@ -38,7 +39,14 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json(transactions);
+    // Decrypt amount and description
+    const decryptedTransactions = transactions.map((transaction) => ({
+      ...transaction,
+      description: decryptData(transaction.description),
+      amount: parseFloat(decryptData(transaction.amount)),
+    }));
+
+    return NextResponse.json(decryptedTransactions);
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Error fetching transactions:', error.message);

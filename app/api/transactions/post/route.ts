@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
+import { encryptData, decryptData } from '@/app/utils/cryptoUtils';
 
 export async function POST(request: Request) {
   try {
@@ -46,28 +47,33 @@ export async function POST(request: Request) {
     const amountChange =
       category.type === 'income' ? amountNumber : -amountNumber;
 
+    // Encrypt amount and description
+    const encryptedAmount = encryptData(amount.toString());
+    const encryptedDescription = encryptData(description);
+
     // Create transaction
     const transaction = await prisma.transaction.create({
       data: {
-        description,
-        amount,
+        description: encryptedDescription,
+        amount: encryptedAmount,
         date: formattedDate,
         categoryId,
         userId: user.id,
       },
     });
 
-    // Update user balance
-    const decryptedBalance = parseFloat(user.balance);
+    // Decrypt user balance, update it, and encrypt it again
+    const decryptedBalance = parseFloat(decryptData(user.balance));
     if (isNaN(decryptedBalance)) {
       return NextResponse.json({ message: 'Invalid balance' }, { status: 400 });
     }
 
     const updatedBalance = decryptedBalance + amountChange;
+    const encryptedUpdatedBalance = encryptData(updatedBalance.toFixed(2));
 
     await prisma.user.update({
       where: { clerkId: userId },
-      data: { balance: updatedBalance.toFixed(2) },
+      data: { balance: encryptedUpdatedBalance },
     });
 
     return NextResponse.json({ transaction });
