@@ -6,9 +6,7 @@ import {
   SelectItem,
   SelectValue,
   SelectGroup,
-  SelectLabel,
-  SelectSeparator,
-} from '@/components/ui/select'; // Adjust the path if necessary
+} from '@/components/ui/select';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
