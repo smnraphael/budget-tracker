@@ -28,6 +28,38 @@
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
   --radius: 0.5rem;
+
+  /* Income */
+  --chart-salary: 210 65% 57%;
+  --chart-bonuses: 36 89% 60%;
+  --chart-freelance-work: 90 60% 54%;
+  --chart-rental-income: 200 20% 78%;
+  --chart-investment-income: 6 88% 65%;
+  --chart-dividends: 60 100% 77%;
+  --chart-interest: 168 78% 60%;
+  --chart-gifts: 0 100% 41%;
+  --chart-government-benefits: 30 45% 34%;
+  --chart-pension: 0 0% 61%;
+  --chart-royalties: 210 77% 45%;
+  --chart-side-hustles: 340 73% 58%;
+  --chart-reimbursements: 86 46% 50%;
+  --chart-other-income: 35 100% 60%;
+
+  /* Expenses */
+  --chart-housing: 6 88% 65%;
+  --chart-utilities: 210 65% 57%;
+  --chart-transportation: 90 60% 54%;
+  --chart-groceries: 36 89% 60%;
+  --chart-health: 200 20% 78%;
+  --chart-entertainment: 35 100% 60%;
+  --chart-education: 0 0% 61%;
+  --chart-clothing: 340 73% 58%;
+  --chart-personal-care: 168 78% 60%;
+  --chart-savings: 210 77% 45%;
+  --chart-debt-repayment: 30 45% 34%;
+  --chart-gifts-donations: 0 100% 41%;
+  --chart-travel: 86 46% 50%;
+  --chart-miscellaneous: 35 100% 60%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,6 +88,38 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Income */
+    --chart-salary: 207, 66%, 56%;
+    --chart-bonuses: 36, 89%, 60%;
+    --chart-freelance-work: 85, 60%, 60%;
+    --chart-rental-income: 210, 13%, 72%;
+    --chart-investment-income: 6, 90%, 64%;
+    --chart-dividends: 57, 92%, 73%;
+    --chart-interest: 168, 78%, 62%;
+    --chart-gifts: 0, 100%, 41%;
+    --chart-government-benefits: 30, 30%, 39%;
+    --chart-pension: 0, 0%, 61%;
+    --chart-royalties: 227, 50%, 53%;
+    --chart-side-hustles: 340, 67%, 55%;
+    --chart-reimbursements: 89, 50%, 50%;
+    --chart-other-income: 34, 100%, 60%;
+
+    /* Expenses */
+    --chart-housing: 6, 90%, 64%;
+    --chart-utilities: 207, 66%, 56%;
+    --chart-transportation: 85, 60%, 60%;
+    --chart-groceries: 36, 89%, 60%;
+    --chart-health: 210, 13%, 72%;
+    --chart-entertainment: 34, 100%, 60%;
+    --chart-education: 0, 0%, 61%;
+    --chart-clothing: 340, 67%, 55%;
+    --chart-personal-care: 168, 78%, 62%;
+    --chart-savings: 227, 50%, 53%;
+    --chart-debt-repayment: 30, 30%, 39%;
+    --chart-gifts-donations: 0, 100%, 41%;
+    --chart-travel: 89, 50%, 50%;
+    --chart-miscellaneous: 39, 100%, 60%;
   }
 }
 
