@@ -13,7 +13,7 @@ export function RecentTransactionsTable({
     <Table>
       <TableBody>
         {transactions.map((transaction) => (
-          <TableRow key={transaction.date}>
+          <TableRow key={transaction.id}>
             <TableCell>
               <Typography variant='p'>{transaction.date}</Typography>
             </TableCell>
