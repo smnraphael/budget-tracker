@@ -11,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Typography } from '@/components/ui/typography';
 
 export default function Home() {
   const { userId } = auth();
@@ -32,7 +31,7 @@ export default function Home() {
         </CardHeader>
         <CardContent className='flex justify-center'>
           <SignedOut>
-            <div className='flex flex-col'>
+            <div className='flex flex-col gap-2'>
               <Link href='/sign-in'>
                 <Button variant='default'>Sign in</Button>
               </Link>
