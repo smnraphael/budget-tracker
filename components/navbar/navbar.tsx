@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-import { Typography } from './typography';
-import { Button } from './button';
+import { Typography } from '../ui/typography';
+import { Button } from '../ui/button';
 import { SignedIn, UserButton } from '@clerk/nextjs';
 
 const navItems = [
@@ -39,7 +39,7 @@ export default function Navbar({ showClerkUserButton = true }) {
             </div>
           </div>
           {showClerkUserButton && (
-            <div className='hidden items-center md:flex'>
+            <div className='hidden items-center px-2 py-4 md:flex'>
               <SignedIn>
                 <UserButton />
               </SignedIn>
@@ -56,8 +56,8 @@ export default function Navbar({ showClerkUserButton = true }) {
         </div>
       </div>
       {isOpen && (
-        <div className='md:hidden'>
-          <div className='space-y-1 px-2 pb-3 pt-2 sm:px-3'>
+        <div className='absolute w-full md:hidden'>
+          <div className='space-y-1 bg-[hsl(var(--background))] px-2 pb-3 pt-2 sm:px-3'>
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -70,6 +70,13 @@ export default function Navbar({ showClerkUserButton = true }) {
                 </Button>
               </Link>
             ))}
+            {showClerkUserButton && (
+              <div className='flex justify-center rounded-md px-3 py-2 md:flex'>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </div>
+            )}
           </div>
         </div>
       )}

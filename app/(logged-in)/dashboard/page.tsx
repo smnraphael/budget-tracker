@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { SignedIn, UserButton } from '@clerk/nextjs';
-import AddExpenseForm from '../components/add-expense-form';
-import AddIncomeForm from '../components/add-income-form';
-import Transactions from '../components/transactions';
-import UserBalance from '../components/user-balance';
+import AddExpenseForm from '../../components/add-expense-form';
+import AddIncomeForm from '../../components/add-income-form';
+import Transactions from '../../components/transactions';
+import UserBalance from '../../components/user-balance';
 
 async function Dashboard() {
   const { userId } = auth();
