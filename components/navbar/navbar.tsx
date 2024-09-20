@@ -17,8 +17,8 @@ export default function Navbar({ showClerkUserButton = true }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav>
-      <div className='mx-auto max-w-6xl px-4'>
+    <nav className='fixed left-0 top-0 z-10 w-full bg-[hsl(var(--background))]'>
+      <div className='z-10 mx-auto w-full max-w-6xl px-4'>
         <div className='flex justify-between'>
           <div className='flex space-x-7'>
             <div className='flex items-center px-2 py-4'>
@@ -31,7 +31,7 @@ export default function Navbar({ showClerkUserButton = true }) {
                   href={item.href}
                   className='px-2 py-4 transition duration-300'
                 >
-                  <Button variant='ghost'>
+                  <Button variant='ghost' className='hover:cursor-pointer'>
                     <Typography variant='h4'>{item.name}</Typography>
                   </Button>
                 </Link>

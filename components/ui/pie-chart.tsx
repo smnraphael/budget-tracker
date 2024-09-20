@@ -38,7 +38,7 @@ export function PieChartComponent({
   }));
 
   return (
-    <Card className='flex flex-col'>
+    <Card className='flex flex-col border-none shadow-none'>
       <CardHeader className='items-center pb-0'>
         <CardTitle>{type}</CardTitle>
       </CardHeader>
