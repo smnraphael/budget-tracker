@@ -1,7 +1,18 @@
 'use client';
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { SignedOut } from '@clerk/nextjs';
+import { Link } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 function Balance() {
   const [balance, setBalance] = useState<string>('');
@@ -26,23 +37,30 @@ function Balance() {
   };
 
   return (
-    <div>
-      <h1>Set Your Balance</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Initial Balance:
-          <input
+    <Card className='w-[350px]'>
+      <CardHeader>
+        <CardTitle>Balance</CardTitle>
+        <CardDescription>
+          Set your balance to start (you can edit it later)
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form
+          onSubmit={handleSubmit}
+          className='flex flex-col justify-center gap-4'
+        >
+          <Input
             type='number'
             value={balance}
             onChange={(e) => setBalance(e.target.value)}
-            placeholder='Enter your balance'
+            placeholder='Balance (€)'
             required
             step='0.01'
           />
-        </label>
-        <button type='submit'>Update Balance</button>
-      </form>
-    </div>
+          <Button>Save</Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 

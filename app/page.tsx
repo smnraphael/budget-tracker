@@ -3,7 +3,15 @@ import { redirect } from 'next/navigation';
 import { auth } from '@clerk/nextjs/server';
 import { SignedOut } from '@clerk/nextjs';
 import EmojiBackground from './components/emoji-background';
-import Button from './components/button';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
 
 export default function Home() {
   const { userId } = auth();
@@ -13,26 +21,28 @@ export default function Home() {
   }
 
   return (
-    <div className='flex h-screen w-full flex-col items-center justify-center gap-2'>
+    <div className='flex h-screen w-full flex-col items-center justify-center px-6'>
       <EmojiBackground />
-      <div className='relative flex flex-col items-center justify-center gap-8 rounded-lg border border-slate-200 p-8 backdrop-blur-sm dark:border-slate-800'>
-        <div>
-          <h1 className='text-8xl font-black uppercase'>Budget Tracker</h1>
-          <p className='font-bold text-slate-500 dark:text-slate-300'>
+      <Card className='backdrop-blur-md'>
+        <CardHeader className='text-center text-6xl'>
+          <CardTitle>Budget Tracker</CardTitle>
+          <CardDescription className='text-center'>
             Tired of using excel to manage your budget? Me too!
-          </p>
-        </div>
-        <SignedOut>
-          <div className='flex gap-6'>
-            <Link href='/sign-in'>
-              <Button variant='primary'>Sign in</Button>
-            </Link>
-            <Link href='/sign-up'>
-              <Button variant='secondary'>Sign up</Button>
-            </Link>
-          </div>
-        </SignedOut>
-      </div>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className='flex justify-center'>
+          <SignedOut>
+            <div className='flex flex-col'>
+              <Link href='/sign-in'>
+                <Button variant='default'>Sign in</Button>
+              </Link>
+              <Link href='/sign-up'>
+                <Button variant='link'>Sign up</Button>
+              </Link>
+            </div>
+          </SignedOut>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -18,7 +18,11 @@ async function BalancePage() {
     await addUserToDatabase(userId, fullName, email);
   }
 
-  return <Balance />;
+  return (
+    <div className='flex h-screen w-full flex-col items-center justify-center px-6'>
+      <Balance />
+    </div>
+  );
 }
 
 export default BalancePage;
