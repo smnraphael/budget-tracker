@@ -26,7 +26,7 @@ export function BarChartComponent({
   chartConfig,
 }: BarChartComponentProps) {
   return (
-    <Card className='border-none'>
+    <Card className='border-none shadow-none'>
       <CardHeader>
         <CardTitle>History</CardTitle>
       </CardHeader>

@@ -22,7 +22,7 @@ export function RadialChartComponent({
   const balance = chartData[0].income - chartData[0].expenses;
 
   return (
-    <Card className='mt-12 flex flex-col border-none'>
+    <Card className='mt-12 flex flex-col border-none shadow-none'>
       <CardHeader className='items-center pb-0'>
         <CardTitle>Ratio</CardTitle>
       </CardHeader>

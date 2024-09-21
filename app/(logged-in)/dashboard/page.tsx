@@ -8,6 +8,7 @@ import ExpensesCard from '@/components/expenses-card/expenses-card';
 import TransactionsCard from '@/components/transactions-card/transactions-card';
 import RecentTransactionsCard from '@/components/recent-transactions-card/recent-transactions-card';
 import TotalCurrentBalance from '@/components/total-current-balance/total-current-balance';
+import BothCta from '@/components/both-cta/both-cta';
 
 const type = 'Expenses';
 
@@ -91,7 +92,7 @@ async function Dashboard() {
 
   return (
     <div className='mx-auto mb-12 mt-24 flex h-max w-full max-w-7xl flex-col gap-6 px-6'>
-      <div className='flex items-end justify-between px-2'>
+      <div className='flex items-center justify-between px-2'>
         <div className='flex flex-col gap-2'>
           <Typography variant='h1'>
             Welcome back, {user?.firstName}! 👋
@@ -103,7 +104,8 @@ async function Dashboard() {
             This is your financial overview report
           </Typography>
         </div>
-        <div>
+        <div className='flex flex-col items-stretch justify-between gap-4'>
+          <BothCta />
           <TotalCurrentBalance />
         </div>
       </div>

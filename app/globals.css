@@ -30,7 +30,7 @@
   --wallet: 270 50% 50%;
   --income: 120 70% 40%;
   --expense: 0 70% 50%;
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
   /* Income */
   --chart-salary: 210 65% 57%;
