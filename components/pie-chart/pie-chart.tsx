@@ -1,12 +1,13 @@
 'use client';
 
-import { Pie, PieChart } from 'recharts';
+import { Label, Pie, PieChart } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
+import { useMemo } from 'react';
 
 interface Transaction {
   amount: number;
@@ -37,6 +38,10 @@ export function PieChartComponent({
     fill: config[transaction.category]?.color || '#ccc',
   }));
 
+  const totalTransactions = useMemo(() => {
+    return data.reduce((acc, curr) => acc + curr.amount, 0);
+  }, []);
+
   return (
     <Card className='flex flex-col border-none shadow-none'>
       <CardHeader className='items-center pb-0'>
@@ -56,8 +61,31 @@ export function PieChartComponent({
               data={data}
               dataKey='amount'
               nameKey='category'
-              innerRadius={50}
-            />
+              innerRadius={70}
+            >
+              <Label
+                content={({ viewBox }) => {
+                  if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
+                    return (
+                      <text
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        textAnchor='middle'
+                        dominantBaseline='middle'
+                      >
+                        <tspan
+                          x={viewBox.cx}
+                          y={viewBox.cy}
+                          className='fill-foreground text-xl font-bold'
+                        >
+                          {totalTransactions.toLocaleString()}€
+                        </tspan>
+                      </text>
+                    );
+                  }
+                }}
+              />
+            </Pie>
           </PieChart>
         </ChartContainer>
       </CardContent>
