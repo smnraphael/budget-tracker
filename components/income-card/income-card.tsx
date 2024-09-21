@@ -3,6 +3,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
 import { TrendingUp } from 'lucide-react';
+import CountUp from 'react-countup';
 
 function IncomeCard() {
   return (
@@ -13,7 +14,9 @@ function IncomeCard() {
             <CardTitle>Income</CardTitle>
           </CardHeader>
           <CardContent>
-            <Typography variant='h4'>5,249.29€</Typography>
+            <Typography variant='h4'>
+              <CountUp start={0} end={5249.29} decimals={2} />€
+            </Typography>
           </CardContent>
         </div>
         <div className='p-6 text-[hsl(var(--income))]'>
