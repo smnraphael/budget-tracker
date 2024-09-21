@@ -26,12 +26,12 @@ export function BarChartComponent({
   chartConfig,
 }: BarChartComponentProps) {
   return (
-    <Card>
+    <Card className='border-none'>
       <CardHeader>
         <CardTitle>History</CardTitle>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
+      <CardContent className='flex justify-center'>
+        <ChartContainer config={chartConfig} className='h-[350px]'>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -44,7 +44,7 @@ export function BarChartComponent({
             <Bar dataKey='income' fill={chartConfig.income.color} radius={4} />
             <Bar
               dataKey='expense'
-              fill={chartConfig.expense.color}
+              fill={chartConfig.expenses.color}
               radius={4}
             />
           </BarChart>

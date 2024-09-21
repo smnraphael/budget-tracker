@@ -43,14 +43,14 @@ export function PieChartComponent({
   }, []);
 
   return (
-    <Card className='flex flex-col border-none shadow-none'>
+    <Card className='mt-12 flex flex-col border-none shadow-none'>
       <CardHeader className='items-center pb-0'>
         <CardTitle>{type}</CardTitle>
       </CardHeader>
       <CardContent className='flex-1'>
         <ChartContainer
           config={config}
-          className='mx-auto aspect-square max-h-[250px]'
+          className='mx-auto aspect-square h-[300px]'
         >
           <PieChart>
             <ChartTooltip

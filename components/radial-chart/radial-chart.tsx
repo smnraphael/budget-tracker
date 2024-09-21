@@ -22,20 +22,20 @@ export function RadialChartComponent({
   const balance = chartData[0].income - chartData[0].expenses;
 
   return (
-    <Card className='flex flex-col'>
+    <Card className='mt-12 flex flex-col border-none'>
       <CardHeader className='items-center pb-0'>
         <CardTitle>Ratio</CardTitle>
       </CardHeader>
       <CardContent className='flex flex-1 items-center pb-0'>
         <ChartContainer
           config={chartConfig}
-          className='mx-auto aspect-square w-full max-w-[250px]'
+          className='mx-auto aspect-square h-[300px] w-full'
         >
           <RadialBarChart
             data={chartData}
             endAngle={180}
-            innerRadius={80}
-            outerRadius={130}
+            innerRadius={100}
+            outerRadius={150}
           >
             <ChartTooltip
               cursor={false}

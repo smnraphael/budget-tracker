@@ -12,7 +12,7 @@ interface RecentTransactionsProps {
 
 function RecentTransactionsCard({ transactionsData }: RecentTransactionsProps) {
   return (
-    <Card className='flex flex-col justify-between'>
+    <Card className='flex h-[500px] flex-col justify-between'>
       <div>
         <CardHeader>
           <CardTitle>Recent transactions</CardTitle>

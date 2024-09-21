@@ -17,22 +17,22 @@ export default function Navbar({ showClerkUserButton = true }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='fixed left-0 top-0 z-10 w-full bg-[hsl(var(--background))]'>
+    <nav className='fixed left-0 top-0 z-10 w-full backdrop-blur-md'>
       <div className='z-10 mx-auto w-full max-w-6xl px-4'>
         <div className='flex justify-between'>
           <div className='flex space-x-7'>
             <div className='flex items-center px-2 py-4'>
-              <Typography variant='h1'>🤑</Typography>
+              <Typography variant='h3'>🤑</Typography>
             </div>
             <div className='hidden items-center space-x-1 md:flex'>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className='px-2 py-4 transition duration-300'
+                  className='px-2 py-2 transition duration-300'
                 >
                   <Button variant='ghost' className='hover:cursor-pointer'>
-                    <Typography variant='h4'>{item.name}</Typography>
+                    <Typography variant='p'>{item.name}</Typography>
                   </Button>
                 </Link>
               ))}
