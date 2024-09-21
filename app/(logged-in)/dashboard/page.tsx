@@ -91,7 +91,7 @@ async function Dashboard() {
   const user = await currentUser();
 
   return (
-    <div className='mx-auto mb-12 mt-20 flex h-max w-full max-w-7xl flex-col gap-6 px-6'>
+    <>
       <div className='flex flex-col items-center justify-between gap-4 px-2 lg:flex-row'>
         <div className='flex flex-col gap-2'>
           <Typography variant='h1'>
@@ -120,7 +120,7 @@ async function Dashboard() {
           config={config}
         />
       </div>
-    </div>
+    </>
   );
 }
 

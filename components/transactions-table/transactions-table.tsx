@@ -14,20 +14,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { Transaction } from '@/app/interfaces/transaction';
 
-interface Transaction {
-  id: string;
-  date: string;
-  description: string;
-  category: string;
-  amount: number;
-}
-
-interface BudgetTableProps {
+interface TransactionsTableProps {
   transactions: Transaction[];
 }
 
-export default function BudgetTable({ transactions }: BudgetTableProps) {
+export default function TransactionsTable({
+  transactions,
+}: TransactionsTableProps) {
   const groupedTransactions: { [date: string]: Transaction[] } =
     transactions.reduce(
       (groups, transaction) => {

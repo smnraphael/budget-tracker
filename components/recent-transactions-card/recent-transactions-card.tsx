@@ -18,7 +18,9 @@ function RecentTransactionsCard({ transactionsData }: RecentTransactionsProps) {
         <CardHeader>
           <CardTitle>Recent transactions</CardTitle>
         </CardHeader>
-        <RecentTransactionsTable transactions={transactionsData} />
+        <div className='px-4'>
+          <RecentTransactionsTable transactions={transactionsData} />
+        </div>
       </div>
       <div className='self-end justify-self-end p-4'>
         <Link href='/transactions'>
