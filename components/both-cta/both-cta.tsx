@@ -5,7 +5,7 @@ import Modal from '../modal/modal';
 import { Button } from '../ui/button';
 
 interface BothCtaProps {
-  fetchTransactions: () => Promise<void>;
+  fetchTransactions: (month: Date) => Promise<void>;
 }
 
 function BothCta({ fetchTransactions }: BothCtaProps) {

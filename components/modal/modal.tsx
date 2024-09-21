@@ -36,7 +36,7 @@ interface ModalProps {
   title: string;
   cta: string;
   type: 'income' | 'expense' | null;
-  fetchTransactions: () => Promise<void>;
+  fetchTransactions: (month: Date) => Promise<void>;
 }
 
 function Modal({
@@ -85,7 +85,7 @@ function Modal({
     if (response.ok) {
       alert('Transaction added successfully');
       onClose();
-      await fetchTransactions();
+      await fetchTransactions(new Date());
     } else {
       const result = await response.json();
       alert(result.message || 'Error adding transaction');

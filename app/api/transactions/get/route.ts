@@ -3,7 +3,7 @@ import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
 import { decryptData } from '@/app/utils/cryptoUtils';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const { userId } = auth();
 
@@ -21,25 +21,21 @@ export async function GET() {
       return NextResponse.json({ message: 'Invalid user' }, { status: 400 });
     }
 
-    // Get the first and last day of the current month
-    const startOfMonth = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      1
-    );
-    const endOfMonth = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth() + 1,
-      0
-    );
+    // Extract query parameters
+    const url = new URL(request.url);
+    const start = url.searchParams.get('start');
+    const end = url.searchParams.get('end');
 
-    // Fetch transactions for the current month
+    const startDate = start ? new Date(start) : new Date();
+    const endDate = end ? new Date(end) : new Date();
+
+    // Fetch transactions for the specified month
     const transactions = await prisma.transaction.findMany({
       where: {
         userId: user.id,
         date: {
-          gte: startOfMonth,
-          lte: endOfMonth,
+          gte: startDate,
+          lte: endDate,
         },
       },
       orderBy: {

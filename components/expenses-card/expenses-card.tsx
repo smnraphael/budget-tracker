@@ -23,7 +23,7 @@ function ExpensesCard({ expenses }: ExpensestCardProps) {
             </Typography>
           </CardContent>
         </div>
-        <div className='p-6 text-[hsl(var(--expense))]'>
+        <div className='m-6 rounded-[var(--radius)] border border-[hsl(var(--expense))] p-2 text-[hsl(var(--expense))]'>
           <TrendingDown className='h-12 w-12' />
         </div>
       </div>

@@ -14,19 +14,7 @@ async function Dashboard() {
 
   return (
     <>
-      <div className='flex flex-col items-center justify-between gap-4 px-2 lg:flex-row'>
-        <div className='flex w-full flex-col gap-2'>
-          <Typography variant='h1'>
-            Welcome back, {user?.firstName}! 👋
-          </Typography>
-          <Typography
-            variant='p'
-            className='text-[hsl(var(--muted-foreground))]'
-          >
-            This is your financial overview report for the current month
-          </Typography>
-        </div>
-      </div>
+      <Typography variant='h1'>Welcome back, {user?.firstName}! 👋</Typography>
       <PageComponents />
     </>
   );

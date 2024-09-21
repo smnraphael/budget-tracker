@@ -9,14 +9,22 @@ import TransactionsCard from '@/components/transactions-card/transactions-card';
 import { Transaction } from '@/app/interfaces/transaction';
 import BothCta from '@/components/both-cta/both-cta';
 import TotalCurrentBalance from '@/components/total-current-balance/total-current-balance';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Typography } from '@/components/ui/typography';
+import { Button } from '@/components/ui/button';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [loading, setLoading] = useState(true);
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = async (month: Date) => {
     try {
-      const response = await fetch('/api/transactions/get');
+      const startOfMonth = new Date(month.getFullYear(), month.getMonth(), 1);
+      const endOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+      const response = await fetch(
+        `/api/transactions/get?start=${startOfMonth.toISOString()}&end=${endOfMonth.toISOString()}`
+      );
       if (!response.ok) {
         throw new Error('Failed to fetch transactions');
       }
@@ -31,9 +39,22 @@ function PageComponents() {
     }
   };
 
+  const goToPreviousMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
+    );
+  };
+
+  const goToNextMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
+    );
+  };
+
   useEffect(() => {
-    fetchTransactions();
-  }, []);
+    setLoading(true);
+    fetchTransactions(currentMonth);
+  }, [currentMonth]);
 
   const income = transactionsData
     .filter((transaction) => transaction.category.type === 'income')
@@ -45,6 +66,11 @@ function PageComponents() {
 
   const balance = income - expenses;
 
+  const formattedDate = currentMonth.toLocaleString('default', {
+    month: 'long',
+    year: 'numeric',
+  });
+
   if (loading)
     return (
       <div className='fixed inset-0 flex items-center justify-center bg-[hsl(var(--background-))]'>
@@ -54,6 +80,27 @@ function PageComponents() {
 
   return (
     <>
+      <Button
+        variant='ghost'
+        onClick={goToPreviousMonth}
+        className='text-none fixed left-2 top-[50%] z-10 backdrop-blur-sm lg:left-[5%]'
+      >
+        <ArrowLeft />
+      </Button>
+      <Button
+        variant='ghost'
+        onClick={goToNextMonth}
+        className='fixed right-2 top-[50%] z-10 backdrop-blur-sm lg:right-[5%]'
+      >
+        <ArrowRight />
+      </Button>
+
+      <Typography
+        variant='p'
+        className='-mt-4 px-2 text-[hsl(var(--muted-foreground))]'
+      >
+        This is your financial overview report for {formattedDate}
+      </Typography>
       <div className='flex flex-col items-center justify-end gap-4 lg:-mt-24 lg:items-end'>
         <BothCta fetchTransactions={fetchTransactions} />
         <TotalCurrentBalance />

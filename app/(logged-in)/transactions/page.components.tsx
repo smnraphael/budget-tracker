@@ -3,15 +3,23 @@
 import { useEffect, useState } from 'react';
 import { Transaction } from '@/app/interfaces/transaction';
 import TransactionsTable from '@/components/transactions-table/transactions-table';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Typography } from '@/components/ui/typography';
+import { Button } from '@/components/ui/button';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [loading, setLoading] = useState(true);
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = async (month: Date) => {
     try {
-      const response = await fetch('/api/transactions/get');
+      const startOfMonth = new Date(month.getFullYear(), month.getMonth(), 1);
+      const endOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+      const response = await fetch(
+        `/api/transactions/get?start=${startOfMonth.toISOString()}&end=${endOfMonth.toISOString()}`
+      );
       if (!response.ok) {
         throw new Error('Failed to fetch transactions');
       }
@@ -42,9 +50,22 @@ function PageComponents() {
     }
   };
 
+  const goToPreviousMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
+    );
+  };
+
+  const goToNextMonth = () => {
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
+    );
+  };
+
   useEffect(() => {
-    fetchTransactions();
-  }, [transactions]);
+    setLoading(true);
+    fetchTransactions(currentMonth);
+  }, [currentMonth]);
 
   if (loading)
     return (
@@ -55,6 +76,20 @@ function PageComponents() {
 
   return (
     <>
+      <div className='mb-4 flex items-center justify-between'>
+        <Button variant='outline' onClick={goToPreviousMonth}>
+          <ArrowLeft />
+        </Button>
+        <Typography variant='h4'>
+          {currentMonth.toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          })}
+        </Typography>
+        <Button variant='outline' onClick={goToNextMonth}>
+          <ArrowRight />
+        </Button>
+      </div>
       <TransactionsTable
         transactions={transactionsData}
         handleDelete={handleDelete}

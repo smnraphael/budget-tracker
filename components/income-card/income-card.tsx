@@ -23,7 +23,7 @@ function IncomeCard({ income }: IncomeCardProps) {
             </Typography>
           </CardContent>
         </div>
-        <div className='p-6 text-[hsl(var(--income))]'>
+        <div className='m-6 rounded-[var(--radius)] border border-[hsl(var(--income))] p-2 text-[hsl(var(--income))]'>
           <TrendingUp className='h-12 w-12' />
         </div>
       </div>
