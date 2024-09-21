@@ -5,6 +5,7 @@ import { RecentTransactionsTable } from '@/components/recent-transactions-table/
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Typography } from '@/components/ui/typography';
+import Link from 'next/link';
 
 interface RecentTransactionsProps {
   transactionsData: Transaction[];
@@ -20,9 +21,11 @@ function RecentTransactionsCard({ transactionsData }: RecentTransactionsProps) {
         <RecentTransactionsTable transactions={transactionsData} />
       </div>
       <div className='self-end justify-self-end p-4'>
-        <Button variant='link'>
-          <Typography variant='p'>See more</Typography>
-        </Button>
+        <Link href='/transactions'>
+          <Button variant='link'>
+            <Typography variant='p'>See more</Typography>
+          </Button>
+        </Link>
       </div>
     </Card>
   );
