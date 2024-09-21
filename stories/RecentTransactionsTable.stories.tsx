@@ -41,7 +41,7 @@ const transactionsData: Transaction[] = [
 ];
 
 const meta: Meta<typeof RecentTransactionsTable> = {
-  title: 'Components/RecentTransactionsTable',
+  title: 'Components/Recent Transactions Table',
   component: RecentTransactionsTable,
   parameters: {
     layout: 'centered',

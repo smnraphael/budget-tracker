@@ -55,7 +55,7 @@ const transactionsData: Transaction[] = [
 ];
 
 const meta: Meta<typeof TransactionsTable> = {
-  title: 'Components/TransactionsTable',
+  title: 'Components/Transactions Table',
   component: TransactionsTable,
   parameters: {
     layout: 'fullscreen',
