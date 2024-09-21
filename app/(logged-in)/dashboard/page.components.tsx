@@ -7,6 +7,8 @@ import ExpensesCard from '@/components/expenses-card/expenses-card';
 import RecentTransactionsCard from '@/components/recent-transactions-card/recent-transactions-card';
 import TransactionsCard from '@/components/transactions-card/transactions-card';
 import { Transaction } from '@/app/interfaces/transaction';
+import BothCta from '@/components/both-cta/both-cta';
+import TotalCurrentBalance from '@/components/total-current-balance/total-current-balance';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
@@ -47,16 +49,22 @@ function PageComponents() {
 
   return (
     <>
-      <WalletCard balance={balance} />
-      <IncomeCard income={income} />
-      <ExpensesCard expenses={expenses} />
-      <RecentTransactionsCard transactions={transactionsData} />
-      <TransactionsCard
-        transactions={transactionsData}
-        income={income}
-        expenses={expenses}
-        balance={balance}
-      />
+      <div className='flex flex-col items-center justify-end gap-4 lg:-mt-24 lg:items-end'>
+        <BothCta fetchTransactions={fetchTransactions} />
+        <TotalCurrentBalance />
+      </div>
+      <div className='grid grid-cols-1 gap-6 lg:grid-cols-3'>
+        <WalletCard balance={balance} />
+        <IncomeCard income={income} />
+        <ExpensesCard expenses={expenses} />
+        <RecentTransactionsCard transactions={transactionsData} />
+        <TransactionsCard
+          transactions={transactionsData}
+          income={income}
+          expenses={expenses}
+          balance={balance}
+        />
+      </div>
     </>
   );
 }

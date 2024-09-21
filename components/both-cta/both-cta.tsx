@@ -4,12 +4,20 @@ import { useState } from 'react';
 import Modal from '../modal/modal';
 import { Button } from '../ui/button';
 
-function BothCta() {
+interface BothCtaProps {
+  fetchTransactions: () => Promise<void>;
+}
+
+function BothCta({ fetchTransactions }: BothCtaProps) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalCta, setModalCta] = useState('');
+  const [transactionType, setTransactionType] = useState<
+    'income' | 'expense' | null
+  >(null);
 
   const handleOpenModal = (type: 'income' | 'expense') => {
+    setTransactionType(type);
     setModalTitle(type === 'income' ? 'New Income' : 'New Expense');
     setModalCta(type === 'income' ? 'Add Income' : 'Add Expense');
     setModalOpen(true);
@@ -38,6 +46,8 @@ function BothCta() {
         onClose={() => setModalOpen(false)}
         title={modalTitle}
         cta={modalCta}
+        type={transactionType}
+        fetchTransactions={fetchTransactions}
       />
     </>
   );
