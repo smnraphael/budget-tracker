@@ -9,6 +9,7 @@ import TransactionsCard from '@/components/transactions-card/transactions-card';
 import { Transaction } from '@/app/interfaces/transaction';
 import BothCta from '@/components/both-cta/both-cta';
 import TotalCurrentBalance from '@/components/total-current-balance/total-current-balance';
+import Loading from '@/app/loading';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
@@ -45,7 +46,7 @@ function PageComponents() {
 
   const balance = income - expenses;
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   return (
     <>

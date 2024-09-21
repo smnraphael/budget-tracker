@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Transaction } from '@/app/interfaces/transaction';
 import TransactionsTable from '@/components/transactions-table/transactions-table';
+import Loading from '@/app/loading';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
@@ -46,7 +47,7 @@ function PageComponents() {
     fetchTransactions();
   }, [transactions]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   return (
     <>

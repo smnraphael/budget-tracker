@@ -13,6 +13,7 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
+import Loading from '@/app/loading';
 
 interface FormData {
   balance: string;
@@ -64,7 +65,7 @@ function PageComponents() {
 
   const formattedBalance = Number(balance).toFixed(2);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   return (
     <div className='flex flex-col items-center gap-6 lg:mt-6'>
