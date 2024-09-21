@@ -41,11 +41,17 @@ export function BarChartComponent({
               axisLine={false}
             />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <Bar dataKey='income' fill={chartConfig.income.color} radius={4} />
+            <Bar
+              dataKey='income'
+              fill={chartConfig.income.color}
+              radius={4}
+              barSize={4}
+            />
             <Bar
               dataKey='expense'
               fill={chartConfig.expenses.color}
               radius={4}
+              barSize={4}
             />
           </BarChart>
         </ChartContainer>

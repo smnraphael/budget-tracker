@@ -36,7 +36,7 @@ const chartData = [
   { day: '2', income: 0, expense: 20 },
   { day: '3', income: 0, expense: 0 },
   { day: '4', income: 0, expense: 15 },
-  { day: '5', income: 320, expense: 0 },
+  { day: '5', income: 320, expense: 200 },
   { day: '6', income: 0, expense: 0 },
   { day: '7', income: 0, expense: 530 },
   { day: '8', income: 0, expense: 80 },

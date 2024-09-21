@@ -61,7 +61,7 @@ export function PieChartComponent({
               data={data}
               dataKey='amount'
               nameKey='category'
-              innerRadius={70}
+              innerRadius={75}
             >
               <Label
                 content={({ viewBox }) => {
