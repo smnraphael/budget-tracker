@@ -13,13 +13,19 @@ interface RecentTransactionsProps {
 
 function RecentTransactionsCard({ transactions }: RecentTransactionsProps) {
   return (
-    <Card className='flex flex-col justify-between lg:h-[500px]'>
+    <Card className='flex min-h-[175px] flex-col justify-between lg:h-[500px]'>
       <div>
         <CardHeader>
           <CardTitle>Recent transactions</CardTitle>
         </CardHeader>
         <div className='px-4'>
-          <RecentTransactionsTable transactions={transactions} />
+          {transactions.length > 0 ? (
+            <RecentTransactionsTable transactions={transactions} />
+          ) : (
+            <Typography variant='p' className='text-center'>
+              Nothing to see here.
+            </Typography>
+          )}
         </div>
       </div>
       <div className='self-end justify-self-end p-4'>

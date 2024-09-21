@@ -13,6 +13,7 @@ import { RadialChartComponent } from '../radial-chart/radial-chart';
 import BothPieChartsComponent from '../both-pie-charts/both-pie-charts';
 import { useState } from 'react';
 import { Transaction } from '@/app/interfaces/transaction';
+import { Typography } from '../ui/typography';
 
 interface TransactionsCardProps {
   transactions: Transaction[];
@@ -34,7 +35,7 @@ function TransactionsCard({
   };
 
   return (
-    <Card className='col-span-1 lg:col-span-2 lg:h-[500px]'>
+    <Card className='col-span-1 min-h-[175px] lg:col-span-2 lg:h-[500px]'>
       <div className='flex justify-between'>
         <CardHeader className='pr-0'>
           <CardTitle>Transactions</CardTitle>
@@ -52,18 +53,26 @@ function TransactionsCard({
           </Select>
         </div>
       </div>
-      {selectedChart === 'pie-chart' && (
-        <BothPieChartsComponent transactions={transactions} />
-      )}
-      {selectedChart === 'bar-chart' && (
-        <BarChartComponent transactions={transactions} />
-      )}
-      {selectedChart === 'radial-chart' && (
-        <RadialChartComponent
-          income={income}
-          expenses={expenses}
-          balance={balance}
-        />
+      {transactions.length > 0 ? (
+        <>
+          {selectedChart === 'pie-chart' && (
+            <BothPieChartsComponent transactions={transactions} />
+          )}
+          {selectedChart === 'bar-chart' && (
+            <BarChartComponent transactions={transactions} />
+          )}
+          {selectedChart === 'radial-chart' && (
+            <RadialChartComponent
+              income={income}
+              expenses={expenses}
+              balance={balance}
+            />
+          )}
+        </>
+      ) : (
+        <Typography variant='p' className='text-center'>
+          Nothing to see here.
+        </Typography>
       )}
     </Card>
   );

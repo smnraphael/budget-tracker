@@ -90,10 +90,16 @@ function PageComponents() {
           <ArrowRight />
         </Button>
       </div>
-      <TransactionsTable
-        transactions={transactionsData}
-        handleDelete={handleDelete}
-      />
+      {transactionsData.length > 0 ? (
+        <TransactionsTable
+          transactions={transactionsData}
+          handleDelete={handleDelete}
+        />
+      ) : (
+        <Typography variant='p' className='text-center'>
+          Nothing to see here.
+        </Typography>
+      )}
     </>
   );
 }
