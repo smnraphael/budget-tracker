@@ -23,7 +23,7 @@ export function RadialChartComponent({
   const formattedData = [{ income: income, expenses: expenses }];
 
   return (
-    <Card className='mt-12 flex flex-col border-none shadow-none'>
+    <Card className='mt-6 flex flex-col border-none shadow-none lg:mt-12'>
       <CardHeader className='items-center pb-0'>
         <CardTitle>Ratio</CardTitle>
       </CardHeader>
