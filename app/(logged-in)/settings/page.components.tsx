@@ -1,30 +1,52 @@
 'use client';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Typography } from '@/components/ui/typography';
-import { Transaction } from '@/app/interfaces/transaction';
+import { FormProvider, useForm } from 'react-hook-form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from '@/components/ui/form';
+
+interface FormData {
+  balance: string;
+}
 
 function PageComponents() {
-  const [balance, setBalance] = useState<string>('');
+  const [balance, setBalance] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
   const router = useRouter();
+  const form = useForm<FormData>();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const fetchBalance = async () => {
+    try {
+      const response = await fetch('/api/user/balance/get');
+      if (!response.ok) {
+        throw new Error('Failed to fetch balance');
+      }
+      const data = await response.json();
+      setBalance(data.balance);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  const handleSubmit = async (data: { balance: string }) => {
     const response = await fetch('/api/user/balance/patch', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ balance: balance.toString() }),
+      body: JSON.stringify({ balance: data.balance }),
     });
 
     if (response.ok) {
@@ -36,74 +58,55 @@ function PageComponents() {
     }
   };
 
-  const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const response = await fetch('/api/transactions/get');
-        if (!response.ok) {
-          throw new Error('Failed to fetch transactions');
-        }
-        const data = await response.json();
-        setTransactionsData(data);
-      } catch (error) {
-        if (error instanceof Error) {
-          console.error(error);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTransactions();
+    fetchBalance();
   }, []);
 
-  const income = transactionsData
-    .filter((transaction) => transaction.category.type === 'income')
-    .reduce((sum, transaction) => sum + transaction.amount, 0);
-
-  const expenses = transactionsData
-    .filter((transaction) => transaction.category.type === 'expense')
-    .reduce((sum, transaction) => sum + transaction.amount, 0);
-
-  const currentBalance = income - expenses;
+  const formattedBalance = Number(balance).toFixed(2);
 
   if (loading) return <div>Loading...</div>;
 
   return (
-    <>
+    <div className='flex flex-col items-center gap-6 lg:mt-6'>
       <Typography variant='p'>
         Current total balance:{' '}
-        <span className='font-bold'>{currentBalance}€</span>
+        <span className='font-bold'>{formattedBalance}€</span>
       </Typography>
 
       <Card className='w-[350px]'>
         <CardHeader>
-          <CardTitle>Balance</CardTitle>
-          <CardDescription>
-            Set your balance to start (you can edit it later)
-          </CardDescription>
+          <CardTitle>Edit your balance</CardTitle>
         </CardHeader>
         <CardContent>
-          <form
-            onSubmit={handleSubmit}
-            className='flex flex-col justify-center gap-4'
-          >
-            <Input
-              type='number'
-              value={balance}
-              onChange={(e) => setBalance(e.target.value)}
-              placeholder='Balance (€)'
-              required
-              step='0.01'
-            />
-            <Button>Save</Button>
-          </form>
+          <FormProvider {...form}>
+            <form
+              onSubmit={form.handleSubmit(handleSubmit)}
+              className='flex flex-col justify-center gap-4'
+            >
+              <FormField
+                control={form.control}
+                name='balance'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Balance (€)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type='number'
+                        placeholder='eg: 1000'
+                        step='0.01'
+                        {...field}
+                        required
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <Button type='submit'>Save</Button>
+            </form>
+          </FormProvider>
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 }
 
