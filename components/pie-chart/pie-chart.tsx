@@ -31,7 +31,9 @@ export function PieChartComponent({ type, transactions }: PieChartProps) {
   return (
     <Card className='mt-12 flex flex-col border-none shadow-none'>
       <CardHeader className='items-center pb-0'>
-        <CardTitle>{type === 'income' ? 'Income' : 'Expenses'}</CardTitle>
+        <CardTitle>
+          {type === 'income' ? 'Income per category' : 'Expenses per category'}
+        </CardTitle>
       </CardHeader>
       <CardContent className='flex-1'>
         <ChartContainer

@@ -8,7 +8,7 @@ function TotalCurrentBalance() {
   const [balance, setBalance] = useState<string | null>(null);
 
   async function fetchBalance() {
-    const response = await fetch('/api/user/balance');
+    const response = await fetch('/api/user/balance/get');
     const data = await response.json();
 
     if (response.ok) {

@@ -28,7 +28,7 @@ async function Dashboard() {
             This is your financial overview report for the current month
           </Typography>
         </div>
-        <div className='flex flex-col items-stretch justify-between gap-4'>
+        <div className='flex w-full flex-col items-center justify-between gap-4 lg:items-end'>
           <BothCta />
           <TotalCurrentBalance />
         </div>
