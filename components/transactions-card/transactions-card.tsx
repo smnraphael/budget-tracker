@@ -89,7 +89,7 @@ function TransactionsCard({
   };
 
   return (
-    <Card className='col-span-2 h-[500px]'>
+    <Card className='col-span-1 lg:col-span-2 lg:h-[500px]'>
       <div className='flex justify-between'>
         <CardHeader>
           <CardTitle>Transactions</CardTitle>

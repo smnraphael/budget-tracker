@@ -7,9 +7,11 @@ import { Button } from '../ui/button';
 function BothCta() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
+  const [modalCta, setModalCta] = useState('');
 
   const handleOpenModal = (type: 'income' | 'expense') => {
-    setModalTitle(type === 'income' ? 'Add Income' : 'Add Expense');
+    setModalTitle(type === 'income' ? 'New Income' : 'New Expense');
+    setModalCta(type === 'income' ? 'Add Income' : 'Add Expense');
     setModalOpen(true);
   };
 
@@ -35,6 +37,7 @@ function BothCta() {
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
         title={modalTitle}
+        cta={modalCta}
       />
     </>
   );

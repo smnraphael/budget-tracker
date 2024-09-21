@@ -92,7 +92,7 @@ async function Dashboard() {
 
   return (
     <div className='mx-auto mb-12 mt-20 flex h-max w-full max-w-7xl flex-col gap-6 px-6'>
-      <div className='flex items-center justify-between px-2'>
+      <div className='flex flex-col items-center justify-between gap-4 px-2 lg:flex-row'>
         <div className='flex flex-col gap-2'>
           <Typography variant='h1'>
             Welcome back, {user?.firstName}! 👋
@@ -109,16 +109,16 @@ async function Dashboard() {
           <TotalCurrentBalance />
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-6'>
+      <div className='grid grid-cols-1 gap-6 lg:grid-cols-3'>
         <WalletCard />
         <IncomeCard />
         <ExpensesCard />
+        <RecentTransactionsCard transactionsData={transactionsData} />
         <TransactionsCard
           type={type}
           transactions={transactions}
           config={config}
         />
-        <RecentTransactionsCard transactionsData={transactionsData} />
       </div>
     </div>
   );

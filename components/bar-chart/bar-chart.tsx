@@ -31,7 +31,7 @@ export function BarChartComponent({
         <CardTitle>History</CardTitle>
       </CardHeader>
       <CardContent className='flex justify-center'>
-        <ChartContainer config={chartConfig} className='h-[350px]'>
+        <ChartContainer config={chartConfig} className='w-full lg:h-[350px]'>
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis

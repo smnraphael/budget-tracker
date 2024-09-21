@@ -16,9 +16,10 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  cta: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, cta }) => {
   if (!isOpen) return null;
 
   return (
@@ -44,7 +45,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
               <SelectItem value='radial-chart'>Radial Chart</SelectItem>
             </SelectContent>
           </Select>
-          <Button>Add</Button>
+          <Button>{cta}</Button>
         </CardContent>
       </Card>
     </div>

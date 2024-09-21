@@ -29,7 +29,7 @@ export function RadialChartComponent({
       <CardContent className='flex flex-1 items-center pb-0'>
         <ChartContainer
           config={chartConfig}
-          className='mx-auto aspect-square h-[300px] w-full'
+          className='mx-auto aspect-square w-full lg:h-[300px]'
         >
           <RadialBarChart
             data={chartData}

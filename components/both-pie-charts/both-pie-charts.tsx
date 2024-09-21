@@ -17,7 +17,7 @@ function BothPieChartsComponent({
   config,
 }: BothPieChartsProps) {
   return (
-    <div className='grid grid-cols-2'>
+    <div className='grid grid-cols-1 lg:grid-cols-2'>
       <PieChartComponent
         type='Income'
         transactions={transactions}
