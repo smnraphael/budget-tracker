@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { auth } from '@clerk/nextjs/server';
 import { SignedOut } from '@clerk/nextjs';
-import EmojiBackground from './components/emoji-background';
+import EmojiBackground from '../components/emoji-background/emoji-background';
 import { Button } from '@/components/ui/button';
 import {
   Card,

@@ -1,0 +1,31 @@
+'use client';
+
+import { Transaction } from '@/app/interfaces/transaction';
+import { RecentTransactionsTable } from '@/components/recent-transactions-table/recent-transactions-table';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Typography } from '@/components/ui/typography';
+
+interface RecentTransactionsProps {
+  transactionsData: Transaction[];
+}
+
+function RecentTransactionsCard({ transactionsData }: RecentTransactionsProps) {
+  return (
+    <Card className='flex flex-col justify-between'>
+      <div>
+        <CardHeader>
+          <CardTitle>Recent transactions</CardTitle>
+        </CardHeader>
+        <RecentTransactionsTable transactions={transactionsData} />
+      </div>
+      <div className='self-end justify-self-end p-4'>
+        <Button variant='link'>
+          <Typography variant='p'>See more</Typography>
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
+export default RecentTransactionsCard;
