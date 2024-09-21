@@ -3,7 +3,7 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { Typography } from '@/components/ui/typography';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Wallet, TrendingUp, TrendingDown } from 'lucide-react';
-import { PieChartComponent } from '@/components/ui/pie-chart';
+import { PieChartComponent } from '@/components/pie-chart/pie-chart';
 import { RecentTransactionsTable } from '@/components/recent-transactions-table/recent-transactions-table';
 import { Transaction } from '@/app/interfaces/transaction';
 import { Button } from '@/components/ui/button';
@@ -182,7 +182,7 @@ async function Dashboard() {
               </Select>
             </div>
           </div>
-          <div className='grid grid-cols-2 gap-4'>
+          <div className='grid grid-cols-2'>
             <PieChartComponent
               type='Income'
               transactions={transactions}
