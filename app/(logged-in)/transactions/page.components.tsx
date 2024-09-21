@@ -6,34 +6,54 @@ import TransactionsTable from '@/components/transactions-table/transactions-tabl
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const response = await fetch('/api/transactions/get');
-        if (!response.ok) {
-          throw new Error('Failed to fetch transactions');
-        }
-        const data = await response.json();
-        setTransactionsData(data);
-      } catch (error) {
-        if (error instanceof Error) {
-          console.error(error);
-        }
-      } finally {
-        setLoading(false);
+  const fetchTransactions = async () => {
+    try {
+      const response = await fetch('/api/transactions/get');
+      if (!response.ok) {
+        throw new Error('Failed to fetch transactions');
       }
-    };
+      const data = await response.json();
+      setTransactionsData(data);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  const handleDelete = async (id: string) => {
+    const response = await fetch(`/api/transactions/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      alert('Transaction deleted successfully');
+      setTransactions(
+        transactions.filter((transaction) => transaction.id !== id)
+      );
+    } else {
+      const result = await response.json();
+      alert(result.message || 'Error deleting transaction');
+    }
+  };
+
+  useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [transactions]);
 
   if (loading) return <div>Loading...</div>;
 
   return (
     <>
-      <TransactionsTable transactions={transactionsData} />{' '}
+      <TransactionsTable
+        transactions={transactionsData}
+        handleDelete={handleDelete}
+      />
     </>
   );
 }

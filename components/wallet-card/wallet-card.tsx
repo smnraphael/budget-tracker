@@ -15,7 +15,7 @@ function WalletCard({ balance }: WalletCardProps) {
       <div className='flex items-center justify-between'>
         <div className='flex flex-col'>
           <CardHeader>
-            <CardTitle>Balance</CardTitle>
+            <CardTitle>Monthly balance</CardTitle>
           </CardHeader>
           <CardContent>
             <Typography variant='h4'>

@@ -19,10 +19,12 @@ import { Transaction } from '@/app/interfaces/transaction';
 
 interface TransactionsTableProps {
   transactions: Transaction[];
+  handleDelete: (id: string) => Promise<void>;
 }
 
 export default function TransactionsTable({
   transactions,
+  handleDelete,
 }: TransactionsTableProps) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -110,7 +112,11 @@ export default function TransactionsTable({
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align='end'>
-                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => handleDelete(transaction.id)}
+                    >
+                      Delete
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>

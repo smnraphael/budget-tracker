@@ -15,7 +15,7 @@ function ExpensesCard({ expenses }: ExpensestCardProps) {
       <div className='flex items-center justify-between'>
         <div className='flex flex-col'>
           <CardHeader>
-            <CardTitle>Expenses</CardTitle>
+            <CardTitle>Monthly Expenses</CardTitle>
           </CardHeader>
           <CardContent>
             <Typography variant='h4'>
