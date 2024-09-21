@@ -13,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { DatePicker } from '../date-picker/date-picker';
+import { format } from 'date-fns';
 import { X } from 'lucide-react';
 
 interface FormData {
@@ -25,6 +27,7 @@ interface FormData {
 export interface Category {
   name: string;
   type: string;
+  id: string;
 }
 
 interface ModalProps {
@@ -89,6 +92,13 @@ function Modal({
     }
   };
 
+  const handleSelectDate = (date: Date | undefined) => {
+    if (date) {
+      const formattedDate = format(date, 'yyyy-MM-dd');
+      setValue('date', formattedDate);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -119,7 +129,7 @@ function Modal({
                 required
                 {...register('amount')}
               />
-              <Input type='date' required {...register('date')} />
+              <DatePicker onSelect={handleSelectDate} />
               <Select
                 onValueChange={(value) => setValue('category', value)}
                 required
@@ -130,7 +140,7 @@ function Modal({
                 <SelectContent>
                   <SelectGroup>
                     {categories.map((category) => (
-                      <SelectItem key={category.name} value={category.name}>
+                      <SelectItem key={category.id} value={category.id}>
                         {category.name}
                       </SelectItem>
                     ))}

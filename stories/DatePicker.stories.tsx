@@ -8,12 +8,7 @@ const meta: Meta<typeof DatePicker> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    date: {
-      control: 'date',
-      description: 'Selected date in the date picker',
-    },
-  },
+  argTypes: {},
 };
 
 export default meta;
