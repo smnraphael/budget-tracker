@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { TransactionsTable } from '@/components/transactions-table/transactions-table';
+import TransactionsTable from '@/components/transactions-table/transactions-table';
 import { Transaction } from '@/app/interfaces/transaction';
 
 const transactionsData: Transaction[] = [
@@ -45,13 +45,6 @@ const transactionsData: Transaction[] = [
     description: 'Electricity Bill',
     amount: -100.0,
   },
-  {
-    id: '7',
-    date: 'August 1, 2024',
-    category: 'Utilities 💡',
-    description: 'Electricity Bill',
-    amount: -100.0,
-  },
 ];
 
 const meta: Meta<typeof TransactionsTable> = {
@@ -63,9 +56,6 @@ const meta: Meta<typeof TransactionsTable> = {
   tags: ['autodocs'],
   args: {
     transactions: transactionsData,
-    onDelete: (transactionId: string) => {
-      alert(`Deleted transaction with id: ${transactionId}`);
-    },
   },
 };
 
