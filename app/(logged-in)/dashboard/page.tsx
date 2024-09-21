@@ -91,7 +91,7 @@ async function Dashboard() {
   const user = await currentUser();
 
   return (
-    <div className='mx-auto mb-12 mt-24 flex h-max w-full max-w-7xl flex-col gap-6 px-6'>
+    <div className='mx-auto mb-12 mt-20 flex h-max w-full max-w-7xl flex-col gap-6 px-6'>
       <div className='flex items-center justify-between px-2'>
         <div className='flex flex-col gap-2'>
           <Typography variant='h1'>
@@ -101,7 +101,7 @@ async function Dashboard() {
             variant='p'
             className='text-[hsl(var(--muted-foreground))]'
           >
-            This is your financial overview report
+            This is your financial overview report for the current month
           </Typography>
         </div>
         <div className='flex flex-col items-stretch justify-between gap-4'>
