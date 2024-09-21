@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { Transaction } from '@/app/interfaces/transaction';
 import TransactionsTable from '@/components/transactions-table/transactions-table';
-import Loading from '@/app/loading';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
@@ -47,7 +46,12 @@ function PageComponents() {
     fetchTransactions();
   }, [transactions]);
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <div className='fixed inset-0 flex items-center justify-center bg-[hsl(var(--background-))]'>
+        Loading...
+      </div>
+    );
 
   return (
     <>

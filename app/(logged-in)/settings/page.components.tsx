@@ -13,7 +13,6 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
-import Loading from '@/app/loading';
 
 interface FormData {
   balance: string;
@@ -65,7 +64,12 @@ function PageComponents() {
 
   const formattedBalance = Number(balance).toFixed(2);
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <div className='fixed inset-0 flex items-center justify-center bg-[hsl(var(--background-))]'>
+        Loading...
+      </div>
+    );
 
   return (
     <div className='flex flex-col items-center gap-6 lg:mt-6'>

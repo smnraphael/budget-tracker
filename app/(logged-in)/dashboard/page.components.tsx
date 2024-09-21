@@ -9,7 +9,6 @@ import TransactionsCard from '@/components/transactions-card/transactions-card';
 import { Transaction } from '@/app/interfaces/transaction';
 import BothCta from '@/components/both-cta/both-cta';
 import TotalCurrentBalance from '@/components/total-current-balance/total-current-balance';
-import Loading from '@/app/loading';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
@@ -46,7 +45,12 @@ function PageComponents() {
 
   const balance = income - expenses;
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <div className='fixed inset-0 flex items-center justify-center bg-[hsl(var(--background-))]'>
+        Loading...
+      </div>
+    );
 
   return (
     <>

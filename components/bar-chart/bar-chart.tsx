@@ -42,7 +42,7 @@ export function BarChartComponent({ transactions }: BarChartComponentProps) {
       }
     });
 
-    return formattedData;
+    return formattedData.reverse();
   };
 
   const formattedData = formatTransactionDataForBarChart(transactions);
