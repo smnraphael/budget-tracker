@@ -5,7 +5,11 @@ import { Typography } from '@/components/ui/typography';
 import { Wallet } from 'lucide-react';
 import CountUp from 'react-countup';
 
-function WalletCard() {
+interface WalletCardProps {
+  balance: number;
+}
+
+function WalletCard({ balance }: WalletCardProps) {
   return (
     <Card>
       <div className='flex items-center justify-between'>
@@ -15,7 +19,7 @@ function WalletCard() {
           </CardHeader>
           <CardContent>
             <Typography variant='h4'>
-              <CountUp start={0} end={3200.34} decimals={2} />€
+              <CountUp start={0} end={balance} decimals={2} />€
             </Typography>
           </CardContent>
         </div>

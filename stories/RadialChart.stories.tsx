@@ -14,22 +14,10 @@ export default meta;
 
 type Story = StoryObj<typeof RadialChartComponent>;
 
-const chartData = [{ income: 1260, expenses: 570 }];
-
-const chartConfig = {
-  income: {
-    label: 'Income',
-    color: 'hsl(var(--income))',
-  },
-  expenses: {
-    label: 'Expenses',
-    color: 'hsl(var(--expense))',
-  },
-};
-
 export const Default: Story = {
   args: {
-    chartData,
-    chartConfig,
+    income: 1260,
+    expenses: 570,
+    balance: 690,
   },
 };

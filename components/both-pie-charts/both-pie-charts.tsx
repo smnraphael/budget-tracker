@@ -1,33 +1,16 @@
 import React from 'react';
 import { PieChartComponent } from '../pie-chart/pie-chart';
-import { Config } from '../transactions-card/transactions-card';
+import { Transaction } from '@/app/interfaces/transaction';
 
 export interface BothPieChartsProps {
-  type: string;
-  transactions: {
-    amount: number;
-    category: string;
-  }[];
-  config: Config;
+  transactions: Transaction[];
 }
 
-function BothPieChartsComponent({
-  type,
-  transactions,
-  config,
-}: BothPieChartsProps) {
+function BothPieChartsComponent({ transactions }: BothPieChartsProps) {
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2'>
-      <PieChartComponent
-        type='Income'
-        transactions={transactions}
-        config={config}
-      />
-      <PieChartComponent
-        type={type}
-        transactions={transactions}
-        config={config}
-      />
+    <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-4'>
+      <PieChartComponent type='income' transactions={transactions} />
+      <PieChartComponent type='expense' transactions={transactions} />
     </div>
   );
 }

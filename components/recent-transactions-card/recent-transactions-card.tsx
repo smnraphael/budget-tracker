@@ -8,10 +8,10 @@ import { Typography } from '@/components/ui/typography';
 import Link from 'next/link';
 
 interface RecentTransactionsProps {
-  transactionsData: Transaction[];
+  transactions: Transaction[];
 }
 
-function RecentTransactionsCard({ transactionsData }: RecentTransactionsProps) {
+function RecentTransactionsCard({ transactions }: RecentTransactionsProps) {
   return (
     <Card className='flex flex-col justify-between lg:h-[500px]'>
       <div>
@@ -19,13 +19,13 @@ function RecentTransactionsCard({ transactionsData }: RecentTransactionsProps) {
           <CardTitle>Recent transactions</CardTitle>
         </CardHeader>
         <div className='px-4'>
-          <RecentTransactionsTable transactions={transactionsData} />
+          <RecentTransactionsTable transactions={transactions} />
         </div>
       </div>
       <div className='self-end justify-self-end p-4'>
         <Link href='/transactions'>
           <Button variant='link'>
-            <Typography variant='p'>See more</Typography>
+            <Typography variant='p'>See more →</Typography>
           </Button>
         </Link>
       </div>

@@ -1,6 +1,4 @@
-'use client';
-
-import { Label, Pie, PieChart } from 'recharts';
+import { Label, Pie, PieChart, Cell } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   ChartContainer,
@@ -8,48 +6,36 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { useMemo } from 'react';
-
-interface Transaction {
-  amount: number;
-  category: string;
-}
-
-interface ChartConfig {
-  [key: string]: {
-    label: string;
-    color: string;
-  };
-}
+import { Transaction } from '@/app/interfaces/transaction';
+import { pieChartConfig } from './pie-chart-config';
 
 interface PieChartProps {
-  type?: string;
+  type: 'income' | 'expense';
   transactions: Transaction[];
-  config: ChartConfig;
 }
 
-export function PieChartComponent({
-  type,
-  transactions,
-  config,
-}: PieChartProps) {
-  const data = transactions.map((transaction) => ({
-    category: transaction.category,
+export function PieChartComponent({ type, transactions }: PieChartProps) {
+  const filteredTransactions = transactions.filter(
+    (transaction) => transaction.category.type === type
+  );
+
+  const data = filteredTransactions.map((transaction) => ({
+    category: transaction.category.name,
     amount: transaction.amount,
-    fill: config[transaction.category]?.color || '#ccc',
   }));
 
   const totalTransactions = useMemo(() => {
-    return data.reduce((acc, curr) => acc + curr.amount, 0);
-  }, []);
+    return data.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
+  }, [data]);
 
   return (
     <Card className='mt-12 flex flex-col border-none shadow-none'>
       <CardHeader className='items-center pb-0'>
-        <CardTitle>{type}</CardTitle>
+        <CardTitle>{type === 'income' ? 'Income' : 'Expenses'}</CardTitle>
       </CardHeader>
       <CardContent className='flex-1'>
         <ChartContainer
-          config={config}
+          config={pieChartConfig}
           className='mx-auto aspect-square h-[300px]'
         >
           <PieChart>
@@ -62,7 +48,12 @@ export function PieChartComponent({
               dataKey='amount'
               nameKey='category'
               innerRadius={75}
+              outerRadius={100}
             >
+              {data.map((entry, index) => {
+                const color = pieChartConfig[entry.category]?.color || '#ccc';
+                return <Cell key={`cell-${index}`} fill={color} />;
+              })}
               <Label
                 content={({ viewBox }) => {
                   if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {

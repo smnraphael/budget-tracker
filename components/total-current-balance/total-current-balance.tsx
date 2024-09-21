@@ -1,7 +1,8 @@
 'use client';
 
-import { Typography } from '@/components/ui/typography';
 import { useEffect, useState } from 'react';
+import { Typography } from '@/components/ui/typography';
+import CountUp from 'react-countup';
 
 function TotalCurrentBalance() {
   const [balance, setBalance] = useState<string | null>(null);
@@ -21,10 +22,14 @@ function TotalCurrentBalance() {
     fetchBalance();
   }, []);
 
+  const totalBalance = Number(balance);
+
   return (
     <Typography variant='p'>
       Total current balance:{' '}
-      <span className='font-semibold'>{Number(balance).toFixed(2)}€</span>
+      <span className='font-semibold'>
+        <CountUp start={0} end={totalBalance} decimals={2} />€
+      </span>
     </Typography>
   );
 }

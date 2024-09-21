@@ -21,9 +21,30 @@ export async function GET() {
       return NextResponse.json({ message: 'Invalid user' }, { status: 400 });
     }
 
-    // Fetch transactions for authenticated user
+    // Get the first and last day of the current month
+    const startOfMonth = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      1
+    );
+    const endOfMonth = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      0
+    );
+
+    // Fetch transactions for the current month
     const transactions = await prisma.transaction.findMany({
-      where: { userId: user.id },
+      where: {
+        userId: user.id,
+        date: {
+          gte: startOfMonth,
+          lte: endOfMonth,
+        },
+      },
+      orderBy: {
+        date: 'desc',
+      },
       select: {
         id: true,
         description: true,

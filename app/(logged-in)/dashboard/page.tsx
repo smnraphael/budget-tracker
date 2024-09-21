@@ -1,85 +1,9 @@
 import { redirect } from 'next/navigation';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { Typography } from '@/components/ui/typography';
-import { Transaction } from '@/app/interfaces/transaction';
-import WalletCard from '@/components/wallet-card/wallet-card';
-import IncomeCard from '@/components/income-card/income-card';
-import ExpensesCard from '@/components/expenses-card/expenses-card';
-import TransactionsCard from '@/components/transactions-card/transactions-card';
-import RecentTransactionsCard from '@/components/recent-transactions-card/recent-transactions-card';
 import TotalCurrentBalance from '@/components/total-current-balance/total-current-balance';
 import BothCta from '@/components/both-cta/both-cta';
-
-const type = 'Expenses';
-
-const transactions = [
-  { amount: 975, category: 'housing' },
-  { amount: 294, category: 'groceries' },
-  { amount: 120, category: 'clothing' },
-  { amount: 60, category: 'utilities' },
-  { amount: 12, category: 'health' },
-];
-
-const config = {
-  housing: {
-    label: 'Housing',
-    color: 'hsl(var(--chart-housing))',
-  },
-  groceries: {
-    label: 'Groceries',
-    color: 'hsl(var(--chart-groceries))',
-  },
-  clothing: {
-    label: 'Clothing',
-    color: 'hsl(var(--chart-clothing))',
-  },
-  utilities: {
-    label: 'Utilities',
-    color: 'hsl(var(--chart-utilities))',
-  },
-  health: {
-    label: 'Health',
-    color: 'hsl(var(--chart-health))',
-  },
-};
-
-const transactionsData: Transaction[] = [
-  {
-    id: '1',
-    date: '12/08',
-    category: 'Housing 🏡',
-    description: 'Rent Payment',
-    amount: -1200.0,
-  },
-  {
-    id: '2',
-    date: '10/08',
-    category: 'Groceries 🛒',
-    description: 'Supermarket',
-    amount: -150.0,
-  },
-  {
-    id: '3',
-    date: '08/08',
-    category: 'Transportation 🚗',
-    description: 'Gas Station',
-    amount: -60.0,
-  },
-  {
-    id: '4',
-    date: '05/08',
-    category: 'Salary 💼',
-    description: 'Company Payroll',
-    amount: 2500.0,
-  },
-  {
-    id: '5',
-    date: '03/08',
-    category: 'Entertainment 🎉',
-    description: 'Concert Tickets',
-    amount: -75.0,
-  },
-];
+import PageComponents from './page.components';
 
 async function Dashboard() {
   const { userId } = auth();
@@ -110,15 +34,7 @@ async function Dashboard() {
         </div>
       </div>
       <div className='grid grid-cols-1 gap-6 lg:grid-cols-3'>
-        <WalletCard />
-        <IncomeCard />
-        <ExpensesCard />
-        <RecentTransactionsCard transactionsData={transactionsData} />
-        <TransactionsCard
-          type={type}
-          transactions={transactions}
-          config={config}
-        />
+        <PageComponents />
       </div>
     </>
   );

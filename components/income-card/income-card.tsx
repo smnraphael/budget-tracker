@@ -5,7 +5,11 @@ import { Typography } from '@/components/ui/typography';
 import { TrendingUp } from 'lucide-react';
 import CountUp from 'react-countup';
 
-function IncomeCard() {
+interface IncomeCardProps {
+  income: number;
+}
+
+function IncomeCard({ income }: IncomeCardProps) {
   return (
     <Card>
       <div className='flex items-center justify-between'>
@@ -15,7 +19,7 @@ function IncomeCard() {
           </CardHeader>
           <CardContent>
             <Typography variant='h4'>
-              <CountUp start={0} end={5249.29} decimals={2} />€
+              <CountUp start={0} end={income} decimals={2} />€
             </Typography>
           </CardContent>
         </div>
