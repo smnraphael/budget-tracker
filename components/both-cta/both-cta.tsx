@@ -5,10 +5,11 @@ import Modal from '../modal/modal';
 import { Button } from '../ui/button';
 
 interface BothCtaProps {
+  fetchBalance: () => Promise<void>;
   fetchTransactions: (month: Date) => Promise<void>;
 }
 
-function BothCta({ fetchTransactions }: BothCtaProps) {
+function BothCta({ fetchBalance, fetchTransactions }: BothCtaProps) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalCta, setModalCta] = useState('');
@@ -47,6 +48,7 @@ function BothCta({ fetchTransactions }: BothCtaProps) {
         title={modalTitle}
         cta={modalCta}
         type={transactionType}
+        fetchBalance={fetchBalance}
         fetchTransactions={fetchTransactions}
       />
     </>

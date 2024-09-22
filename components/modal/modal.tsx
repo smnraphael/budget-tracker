@@ -36,6 +36,7 @@ interface ModalProps {
   title: string;
   cta: string;
   type: 'income' | 'expense' | null;
+  fetchBalance: () => Promise<void>;
   fetchTransactions: (month: Date) => Promise<void>;
 }
 
@@ -45,6 +46,7 @@ function Modal({
   onClose,
   isOpen,
   type,
+  fetchBalance,
   fetchTransactions,
 }: ModalProps) {
   const methods = useForm<FormData>();
@@ -88,6 +90,7 @@ function Modal({
       alert('Transaction added successfully');
       reset();
       onClose();
+      await fetchBalance();
       await fetchTransactions(new Date());
     } else {
       const result = await response.json();

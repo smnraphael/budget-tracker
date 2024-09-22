@@ -15,8 +15,20 @@ import { Button } from '@/components/ui/button';
 
 function PageComponents() {
   const [transactionsData, setTransactionsData] = useState<Transaction[]>([]);
+  const [totalBalance, setTotalBalance] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [loading, setLoading] = useState(true);
+
+  const fetchBalance = async () => {
+    const response = await fetch('/api/user/balance/get');
+    const data = await response.json();
+
+    if (response.ok) {
+      setTotalBalance(data.balance);
+    } else {
+      console.error('Error fetching balance');
+    }
+  };
 
   const fetchTransactions = async (month: Date) => {
     try {
@@ -57,6 +69,7 @@ function PageComponents() {
 
   useEffect(() => {
     setLoading(true);
+    fetchBalance();
     fetchTransactions(currentMonth);
   }, [currentMonth]);
 
@@ -106,8 +119,11 @@ function PageComponents() {
         This is your financial overview report for {formattedDate}
       </Typography>
       <div className='flex flex-col items-center justify-end gap-4 lg:-mt-24 lg:items-end'>
-        <BothCta fetchTransactions={fetchTransactions} />
-        <TotalCurrentBalance />
+        <BothCta
+          fetchBalance={fetchBalance}
+          fetchTransactions={fetchTransactions}
+        />
+        <TotalCurrentBalance totalBalance={totalBalance} />
       </div>
       <div className='grid grid-cols-1 gap-6 lg:grid-cols-3'>
         <WalletCard balance={balance} />
