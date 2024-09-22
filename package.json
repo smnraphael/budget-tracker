@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "seed": "node prisma/seed.ts"
+    "seed": "node prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.4.1",
