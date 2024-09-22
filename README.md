@@ -1,6 +1,6 @@
 # Budget Tracker
 
-A budget tracking application built with Next.js and TypeScript. This app allows users to manage their finances effectively, track expenses, and visualize their spending patterns.
+A budget tracking application built with Next.js and TypeScript. This app allows users to manage their finances effectively, track expenses, and visualize their spending patterns. You can try the live app [here](https://budget-tracker-amber.vercel.app).
 
 ## Project Description
 
@@ -20,7 +20,7 @@ From here, you can easily add new income or expenses through intuitive buttons. 
 Additionally, the dashboard showcases:
 
 - **Recent Transactions**: A list displaying the date, description, and amount of your latest transactions.
-- **Visual Analytics**: Three dynamic graphs to help you understand your finances:
+- **Visual Analytics**: Three dynamic charts to help you understand your finances. You can hover over each of them to reveal more detailed information.
   - **Pie Chart**: Breakdown of income and expenses by category.
   - **Bar Chart**: Monthly history of income and expenses.
   - **Radial Chart**: Ratio of income to expenses.
