@@ -25,6 +25,7 @@ Additionally, the dashboard showcases:
   - **Radial Chart**: Ratio of income to expenses.
 
 You can navigate between months effortlessly using arrow buttons.
+<img width="1000" alt="dashboard-1" src="https://github.com/user-attachments/assets/726c2a6b-fa0c-46e3-96ee-e6794db71848">
 
 ### 2. Transactions
 
@@ -36,6 +37,8 @@ The transactions page provides a detailed view of all your monthly transactions,
 - Amount
 
 You also have the option to delete any transaction, and navigation between months is made easy with arrow buttons.
+<img width="1000" alt="transactions" src="https://github.com/user-attachments/assets/802c77dc-377a-4cff-9579-048c5b087d26">
+
 
 ### 3. Settings
 
@@ -44,6 +47,11 @@ In the settings page, you can view and edit your total current balance, giving y
 ### Account Creation
 
 During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account.
+
+### Data Encryption
+All data related to transactions is securely encrypted, ensuring that your financial information remains confidential and protected.
+<img width="1000" alt="transactions" src="https://github.com/user-attachments/assets/a7e37fd1-0e36-4a8b-8d8b-09199b920009">
+
 
 ### Responsive Design
 
