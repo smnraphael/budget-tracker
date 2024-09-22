@@ -19,12 +19,21 @@ export function PieChartComponent({ type, transactions }: PieChartProps) {
     (transaction) => transaction.category.type === type
   );
 
-  const data = filteredTransactions
-    .map((transaction) => ({
-      category: transaction.category.name,
-      amount: transaction.amount,
-    }))
-    .sort((a, b) => a.amount - b.amount);
+  const data = useMemo(() => {
+    const groupedData = filteredTransactions.reduce(
+      (acc, transaction) => {
+        const category = transaction.category.name;
+        if (!acc[category]) {
+          acc[category] = { category, amount: 0 };
+        }
+        acc[category].amount += transaction.amount;
+        return acc;
+      },
+      {} as Record<string, { category: string; amount: number }>
+    );
+
+    return Object.values(groupedData).sort((a, b) => a.amount - b.amount);
+  }, [filteredTransactions]);
 
   const totalTransactions = useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
