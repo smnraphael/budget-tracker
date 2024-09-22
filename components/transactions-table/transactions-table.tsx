@@ -16,6 +16,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Transaction } from '@/app/interfaces/transaction';
+import { Typography } from '../ui/typography';
 
 interface TransactionsTableProps {
   transactions: Transaction[];
@@ -68,13 +69,20 @@ export default function TransactionsTable({
         });
   };
 
+  const formatAmount = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  };
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Date</TableHead>
           <TableHead>Description</TableHead>
-          <TableHead className='hidden lg:table-cell'>Category</TableHead>
+          <TableHead className='hidden md:table-cell'>Category</TableHead>
           <TableHead>Amount</TableHead>
           <TableHead></TableHead>
         </TableRow>
@@ -88,7 +96,7 @@ export default function TransactionsTable({
               <TableCell className='font-medium'>
                 {transaction.description}
               </TableCell>
-              <TableCell className='hidden lg:table-cell'>
+              <TableCell className='hidden md:table-cell'>
                 {transaction.category.name}
               </TableCell>
               <TableCell
@@ -99,10 +107,15 @@ export default function TransactionsTable({
                       : 'hsl(var(--expense))',
                 }}
               >
-                {transaction.category.type === 'income'
-                  ? transaction.amount.toFixed(2)
-                  : -transaction.amount.toFixed(2)}
-                €
+                {transaction.category.type === 'income' ? (
+                  <Typography variant='p' className='font-bold'>
+                    {formatAmount(Number(transaction.amount))}€
+                  </Typography>
+                ) : (
+                  <Typography variant='p' className='font-bold'>
+                    -{formatAmount(Number(transaction.amount))}€
+                  </Typography>
+                )}
               </TableCell>
               <TableCell>
                 <DropdownMenu>

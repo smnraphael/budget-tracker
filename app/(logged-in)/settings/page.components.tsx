@@ -62,7 +62,12 @@ function PageComponents() {
     fetchBalance();
   }, []);
 
-  const formattedBalance = Number(balance).toFixed(2);
+  const formatAmount = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  };
 
   if (loading)
     return (
@@ -75,7 +80,7 @@ function PageComponents() {
     <div className='flex flex-col items-center gap-6 lg:mt-6'>
       <Typography variant='p'>
         Current total balance:{' '}
-        <span className='font-bold'>{formattedBalance}€</span>
+        <span className='font-bold'>{formatAmount(Number(balance))}€</span>
       </Typography>
 
       <Card className='w-[350px]'>

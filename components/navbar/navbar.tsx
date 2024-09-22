@@ -17,7 +17,7 @@ export default function Navbar({ showClerkUserButton = true }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='fixed left-0 top-0 z-10 w-full border-b bg-[hsl(var(--background))]'>
+    <nav className='fixed left-0 top-0 z-10 w-full border-b-2 bg-[hsl(var(--background))]'>
       <div className='z-10 mx-auto w-full max-w-6xl px-4'>
         <div className='flex justify-between'>
           <div className='flex space-x-7'>
@@ -56,7 +56,7 @@ export default function Navbar({ showClerkUserButton = true }) {
         </div>
       </div>
       {isOpen && (
-        <div className='absolute w-full md:hidden'>
+        <div className='absolute w-full border-b md:hidden'>
           <div className='space-y-1 border-b bg-[hsl(var(--background))] px-2 pb-4 pt-2 sm:px-3'>
             {navItems.map((item) => (
               <Link

@@ -4,7 +4,9 @@ import PageComponents from './page.components';
 function Transactions() {
   return (
     <>
-      <Typography variant='h1'>Transactions</Typography>
+      <Typography variant='h1' className='px-2'>
+        Transactions
+      </Typography>
       <PageComponents />
     </>
   );

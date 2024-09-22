@@ -28,14 +28,14 @@ function BothCta({ fetchTransactions }: BothCtaProps) {
       <div className='mt-2 flex justify-end gap-4'>
         <Button
           variant='outline'
-          className='text-[hsl(var(--income))]'
+          className='border-2 border-[hsl(var(--income))] text-[hsl(var(--income))] hover:text-[hsl(var(--income))]'
           onClick={() => handleOpenModal('income')}
         >
           Add Income
         </Button>
         <Button
           variant='outline'
-          className='text-[hsl(var(--expense))]'
+          className='border-2 border-[hsl(var(--expense))] text-[hsl(var(--expense))] hover:text-[hsl(var(--expense))]'
           onClick={() => handleOpenModal('expense')}
         >
           Add Expense

@@ -27,42 +27,47 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
-  --wallet: 270 50% 50%;
-  --income: 120 70% 40%;
-  --expense: 0 70% 50%;
   --radius: 0.75rem;
 
-  /* Income */
-  --chart-salary: 210 65% 57%;
-  --chart-bonuses: 36 89% 60%;
-  --chart-freelance-work: 90 60% 54%;
-  --chart-rental-income: 200 20% 78%;
-  --chart-investment-income: 6 88% 65%;
-  --chart-dividends: 60 100% 77%;
-  --chart-interest: 168 78% 60%;
-  --chart-gifts: 0 100% 41%;
-  --chart-government-benefits: 30 45% 34%;
-  --chart-pension: 0 0% 61%;
-  --chart-royalties: 210 77% 45%;
-  --chart-side-hustles: 340 73% 58%;
-  --chart-reimbursements: 86 46% 50%;
-  --chart-other-income: 35 100% 60%;
+  /* Income Categories */
+  --chart-salary: 120, 60%, 70%; /* Light Green */
+  --chart-business: 210, 70%, 70%; /* Light Blue */
+  --chart-bonuses: 290, 70%, 80%; /* Light Purple */
+  --chart-investments: 45, 85%, 70%; /* Light Yellow */
+  --chart-pensions: 60, 50%, 70%; /* Light Golden Yellow */
+  --chart-freelance: 200, 80%, 70%; /* Light Sky Blue */
+  --chart-government: 0, 75%, 70%; /* Light Red */
+  --chart-dividends: 60, 80%, 75%; /* Light Light Gold */
+  --chart-rental: 30, 80%, 70%; /* Light Orange */
+  --chart-gifts: 340, 80%, 80%; /* Light Pink */
+  --chart-refunds: 180, 50%, 70%; /* Light Teal */
+  --chart-royalties: 160, 70%, 70%; /* Light Turquoise */
+  --chart-lottery: 340, 60%, 75%; /* Light Soft Pink */
+  --chart-other: 0, 0%, 70%; /* Light Neutral Gray */
 
-  /* Expenses */
-  --chart-housing: 6 88% 65%;
-  --chart-utilities: 210 65% 57%;
-  --chart-transportation: 90 60% 54%;
-  --chart-groceries: 36 89% 60%;
-  --chart-health: 200 20% 78%;
-  --chart-entertainment: 35 100% 60%;
-  --chart-education: 0 0% 61%;
-  --chart-clothing: 340 73% 58%;
-  --chart-personal-care: 168 78% 60%;
-  --chart-savings: 210 77% 45%;
-  --chart-debt-repayment: 30 45% 34%;
-  --chart-gifts-donations: 0 100% 41%;
-  --chart-travel: 86 46% 50%;
-  --chart-miscellaneous: 35 100% 60%;
+  /* Expense Categories */
+  --chart-housing: 30, 50%, 70%; /* Light Orange */
+  --chart-utilities: 240, 60%, 70%; /* Light Mid Blue */
+  --chart-groceries: 120, 50%, 70%; /* Light Dark Green */
+  --chart-transportation: 360, 70%, 70%; /* Light Bright Red */
+  --chart-dining: 28, 60%, 75%; /* Light Light Orange */
+  --chart-health: 160, 40%, 70%; /* Light Dark Teal */
+  --chart-debt: 0, 0%, 50%; /* Light Dark Gray */
+  --chart-shopping: 330, 60%, 70%; /* Light Magenta */
+  --chart-insurance: 200, 70%, 70%; /* Light Cyan */
+  --chart-education: 60, 70%, 70%; /* Light Gold */
+  --chart-subscriptions: 210, 50%, 75%; /* Light Soft Blue */
+  --chart-maintenance: 40, 50%, 70%; /* Light Warm Yellow */
+  --chart-travel: 190, 70%, 70%; /* Light Bright Cyan */
+  --chart-entertainment: 270, 60%, 75%; /* Light Mid Purple */
+  --chart-care: 340, 50%, 75%; /* Light Soft Pink */
+  --chart-sports: 100, 50%, 70%; /* Light Light Green */
+  --chart-childcare: 50, 60%, 70%; /* Light Pale Yellow */
+
+  /* Wallet */
+  --wallet: 210, 60%, 80%; /* Light Blue */
+  --income: 120, 50%, 45%; /* Medium Green */
+  --expense: 0, 70%, 45%; /* Medium Red */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -91,41 +96,43 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --wallet: 270 50% 30%;
-    --income: 120 70% 40%;
-    --expense: 0 70% 50%;
 
-    /* Income */
-    --chart-salary: 207, 66%, 56%;
-    --chart-bonuses: 36, 89%, 60%;
-    --chart-freelance-work: 85, 60%, 60%;
-    --chart-rental-income: 210, 13%, 72%;
-    --chart-investment-income: 6, 90%, 64%;
-    --chart-dividends: 57, 92%, 73%;
-    --chart-interest: 168, 78%, 62%;
-    --chart-gifts: 0, 100%, 41%;
-    --chart-government-benefits: 30, 30%, 39%;
-    --chart-pension: 0, 0%, 61%;
-    --chart-royalties: 227, 50%, 53%;
-    --chart-side-hustles: 340, 67%, 55%;
-    --chart-reimbursements: 89, 50%, 50%;
-    --chart-other-income: 34, 100%, 60%;
+    --chart-salary: 120, 60%, 40%; /* Green */
+    --chart-business: 210, 70%, 50%; /* Blue */
+    --chart-bonuses: 290, 70%, 55%; /* Purple */
+    --chart-investments: 45, 85%, 50%; /* Yellow */
+    --chart-pensions: 30, 60%, 45%; /* Golden Yellow */
+    --chart-freelance: 200, 80%, 50%; /* Sky Blue */
+    --chart-government: 0, 80%, 60%; /* Bright Red */
+    --chart-dividends: 60, 70%, 55%; /* Light Gold */
+    --chart-rental: 30, 70%, 55%; /* Orange */
+    --chart-gifts: 340, 70%, 60%; /* Pink */
+    --chart-refunds: 180, 60%, 50%; /* Teal */
+    --chart-royalties: 160, 80%, 50%; /* Turquoise */
+    --chart-lottery: 300, 70%, 65%; /* Soft Purple */
+    --chart-other: 0, 0%, 60%;
 
-    /* Expenses */
-    --chart-housing: 6, 90%, 64%;
-    --chart-utilities: 207, 66%, 56%;
-    --chart-transportation: 85, 60%, 60%;
-    --chart-groceries: 36, 89%, 60%;
-    --chart-health: 210, 13%, 72%;
-    --chart-entertainment: 34, 100%, 60%;
-    --chart-education: 0, 0%, 61%;
-    --chart-clothing: 340, 67%, 55%;
-    --chart-personal-care: 168, 78%, 62%;
-    --chart-savings: 227, 50%, 53%;
-    --chart-debt-repayment: 30, 30%, 39%;
-    --chart-gifts-donations: 0, 100%, 41%;
-    --chart-travel: 89, 50%, 50%;
-    --chart-miscellaneous: 39, 100%, 60%;
+    --chart-housing: 30, 60%, 35%; /* Orange */
+    --chart-utilities: 210, 50%, 50%; /* Mid Blue */
+    --chart-groceries: 120, 50%, 45%; /* Dark Green */
+    --chart-transportation: 360, 80%, 50%; /* Bright Red */
+    --chart-dining: 28, 60%, 55%; /* Light Orange */
+    --chart-health: 160, 50%, 45%; /* Teal */
+    --chart-debt: 0, 0%, 25%; /* Dark Gray */
+    --chart-shopping: 330, 60%, 50%; /* Magenta */
+    --chart-insurance: 200, 70%, 40%; /* Cyan */
+    --chart-education: 60, 70%, 50%; /* Gold */
+    --chart-subscriptions: 210, 60%, 50%; /* Soft Blue */
+    --chart-maintenance: 40, 50%, 50%; /* Warm Yellow */
+    --chart-travel: 190, 70%, 45%; /* Bright Cyan */
+    --chart-entertainment: 270, 60%, 55%; /* Purple */
+    --chart-care: 340, 60%, 50%; /* Soft Pink */
+    --chart-sports: 100, 50%, 45%; /* Light Green */
+    --chart-childcare: 50, 60%, 50%; /* Pale Yellow */
+
+    --income: 120, 50%, 45%; /* Medium Green */
+    --expense: 0, 70%, 45%; /* Medium Red */
+    --wallet: 210, 60%, 50%; /* Medium Blue */
   }
 }
 

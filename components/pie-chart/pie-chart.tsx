@@ -28,6 +28,13 @@ export function PieChartComponent({ type, transactions }: PieChartProps) {
     return data.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
   }, [data]);
 
+  const formatAmount = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  };
+
   return (
     <Card className='flex flex-col border-none shadow-none lg:mt-12'>
       <CardHeader className='items-center pb-0'>
@@ -71,7 +78,7 @@ export function PieChartComponent({ type, transactions }: PieChartProps) {
                           y={viewBox.cy}
                           className='fill-foreground text-xl font-bold'
                         >
-                          {totalTransactions.toLocaleString()}€
+                          {formatAmount(Number(totalTransactions))}€
                         </tspan>
                       </text>
                     );

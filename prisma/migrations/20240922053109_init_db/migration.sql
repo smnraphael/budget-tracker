@@ -33,3 +33,6 @@ CREATE TABLE "Transaction" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_clerkId_key" ON "User"("clerkId");
+
+-- CreateIndex
+CREATE INDEX "Transaction_date_idx" ON "Transaction"("date");

@@ -6,116 +6,131 @@ interface Config {
 }
 
 export const pieChartConfig: Config = {
-  'Housing 🏡': {
-    label: 'Housing 🏡',
-    color: 'hsl(var(--chart-housing))',
-  },
-  'Utilities 💡': {
-    label: 'Utilities 💡',
-    color: 'hsl(var(--chart-utilities))',
-  },
-  'Transportation 🚗': {
-    label: 'Transportation 🚗',
-    color: 'hsl(var(--chart-transportation))',
-  },
-  'Groceries 🛒': {
-    label: 'Groceries 🛒',
-    color: 'hsl(var(--chart-groceries))',
-  },
-  'Health 🩺': {
-    label: 'Health 🩺',
-    color: 'hsl(var(--chart-health))',
-  },
-  'Entertainment 🎉': {
-    label: 'Entertainment 🎉',
-    color: 'hsl(var(--chart-entertainment))',
-  },
-  'Education 🎓': {
-    label: 'Education 🎓',
-    color: 'hsl(var(--chart-education))',
-  },
-  'Clothing 👗': {
-    label: 'Clothing 👗',
-    color: 'hsl(var(--chart-clothing))',
-  },
-  'Personal Care 🧴': {
-    label: 'Personal Care 🧴',
-    color: 'hsl(var(--chart-personal-care))',
-  },
-  'Savings 💰': {
-    label: 'Savings 💰',
-    color: 'hsl(var(--chart-savings))',
-  },
-  'Debt Repayment 💳': {
-    label: 'Debt Repayment 💳',
-    color: 'hsl(var(--chart-debt-repayment))',
-  },
-  'Gifts and Donations 🎁': {
-    label: 'Gifts and Donations 🎁',
-    color: 'hsl(var(--chart-gifts-donations))',
-  },
-  'Travel ✈️': {
-    label: 'Travel ✈️',
-    color: 'hsl(var(--chart-travel))',
-  },
-  'Miscellaneous 🗂️': {
-    label: 'Miscellaneous 🗂️',
-    color: 'hsl(var(--chart-miscellaneous))',
-  },
-  'Salary 💼': {
-    label: 'Salary 💼',
+  // Incomes
+  '💼 Salary': {
+    label: '💼 Salary',
     color: 'hsl(var(--chart-salary))',
   },
-  'Bonuses 🎉': {
-    label: 'Bonuses 🎉',
+  '📈 Business Income': {
+    label: '📈 Business Income',
+    color: 'hsl(var(--chart-business))',
+  },
+  '🎉 Bonuses': {
+    label: '🎉 Bonuses',
     color: 'hsl(var(--chart-bonuses))',
   },
-  'Freelance Work 🖥️': {
-    label: 'Freelance Work 🖥️',
-    color: 'hsl(var(--chart-freelance-work))',
+  '💹 Investments': {
+    label: '💹 Investments',
+    color: 'hsl(var(--chart-investments))',
   },
-  'Rental Income 🏠': {
-    label: 'Rental Income 🏠',
-    color: 'hsl(var(--chart-rental-income))',
+  '💸 Pensions': {
+    label: '💸 Pensions',
+    color: 'hsl(var(--chart-pensions))',
   },
-  'Investment Income 📈': {
-    label: 'Investment Income 📈',
-    color: 'hsl(var(--chart-investment-income))',
+  '🧑‍🏫 Freelance': {
+    label: '🧑‍🏫 Freelance',
+    color: 'hsl(var(--chart-freelance))',
   },
-  'Dividends 💵': {
-    label: 'Dividends 💵',
+  '🏛️ Government Benefits': {
+    label: '🏛️ Government Benefits',
+    color: 'hsl(var(--chart-government))',
+  },
+  '💰 Dividends': {
+    label: '💰 Dividends',
     color: 'hsl(var(--chart-dividends))',
   },
-  'Interest 💸': {
-    label: 'Interest 💸',
-    color: 'hsl(var(--chart-interest))',
+  '🏠 Rental Income': {
+    label: '🏠 Rental Income',
+    color: 'hsl(var(--chart-rental))',
   },
-  'Gifts 🎁': {
-    label: 'Gifts 🎁',
+  '🎁 Gifts': {
+    label: '🎁 Gifts',
     color: 'hsl(var(--chart-gifts))',
   },
-  'Government Benefits 💼': {
-    label: 'Government Benefits 💼',
-    color: 'hsl(var(--chart-government-benefits))',
+  '🔄 Refunds': {
+    label: '🔄 Refunds',
+    color: 'hsl(var(--chart-refunds))',
   },
-  'Pension 👴': {
-    label: 'Pension 👴',
-    color: 'hsl(var(--chart-pension))',
-  },
-  'Royalties 📚': {
-    label: 'Royalties 📚',
+  '📚 Royalties': {
+    label: '📚 Royalties',
     color: 'hsl(var(--chart-royalties))',
   },
-  'Side Hustles 🚀': {
-    label: 'Side Hustles 🚀',
-    color: 'hsl(var(--chart-side-hustles))',
+  '🎯 Lottery': {
+    label: '🎯 Lottery',
+    color: 'hsl(var(--chart-lottery))',
   },
-  'Reimbursements 💳': {
-    label: 'Reimbursements 💳',
-    color: 'hsl(var(--chart-reimbursements))',
+  '🪙 Other': {
+    label: '🪙 Other',
+    color: 'hsl(var(--chart-other))',
   },
-  'Other Income 🌟': {
-    label: 'Other Income 🌟',
-    color: 'hsl(var(--chart-other-income))',
+
+  // Expenses
+  '🏡 Housing': {
+    label: '🏡 Housing',
+    color: 'hsl(var(--chart-housing))',
+  },
+  '💡 Utilities': {
+    label: '💡 Utilities',
+    color: 'hsl(var(--chart-utilities))',
+  },
+  '🛒 Groceries': {
+    label: '🛒 Groceries',
+    color: 'hsl(var(--chart-groceries))',
+  },
+  '🚗 Transportation': {
+    label: '🚗 Transportation',
+    color: 'hsl(var(--chart-transportation))',
+  },
+  '🍽️ Dining': {
+    label: '🍽️ Dining',
+    color: 'hsl(var(--chart-dining))',
+  },
+  '🏥 Health': {
+    label: '🏥 Health',
+    color: 'hsl(var(--chart-health))',
+  },
+  '💳 Debt Repayment': {
+    label: '💳 Debt Repayment',
+    color: 'hsl(var(--chart-debt))',
+  },
+  '🛍️ Shopping': {
+    label: '🛍️ Shopping',
+    color: 'hsl(var(--chart-shopping))',
+  },
+  '🛡️ Insurance': {
+    label: '🛡️ Insurance',
+    color: 'hsl(var(--chart-insurance))',
+  },
+  '📚 Education': {
+    label: '📚 Education',
+    color: 'hsl(var(--chart-education))',
+  },
+  '🧾 Subscriptions': {
+    label: '🧾 Subscriptions',
+    color: 'hsl(var(--chart-subscriptions))',
+  },
+  '🛠️ Home Maintenance': {
+    label: '🛠️ Home Maintenance',
+    color: 'hsl(var(--chart-maintenance))',
+  },
+  '✈️ Travel': {
+    label: '✈️ Travel',
+    color: 'hsl(var(--chart-travel))',
+  },
+  '🎬 Entertainment': {
+    label: '🎬 Entertainment',
+    color: 'hsl(var(--chart-entertainment))',
+  },
+  '💇‍♀️ Personal Care': {
+    label: '💇‍♀️ Personal Care',
+    color: 'hsl(var(--chart-care))',
+  },
+  '🏋️‍♂️ Sports': {
+    label: '🏋️‍♂️ Sports',
+    color: 'hsl(var(--chart-sports))',
+  },
+  '🧸 Childcare': {
+    label: '🧸 Childcare',
+    color: 'hsl(var(--chart-childcare))',
   },
 };

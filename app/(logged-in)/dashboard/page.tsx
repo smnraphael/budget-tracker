@@ -14,7 +14,9 @@ async function Dashboard() {
 
   return (
     <>
-      <Typography variant='h1'>Welcome back, {user?.firstName}! 👋</Typography>
+      <Typography variant='h1' className='px-2'>
+        Welcome back, {user?.firstName}! 👋
+      </Typography>
       <PageComponents />
     </>
   );

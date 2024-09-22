@@ -48,7 +48,7 @@ function Modal({
   fetchTransactions,
 }: ModalProps) {
   const methods = useForm<FormData>();
-  const { handleSubmit, register, setValue } = methods;
+  const { handleSubmit, register, setValue, reset } = methods;
 
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -69,8 +69,10 @@ function Modal({
   }, [isOpen, type]);
 
   const onSubmit = async (data: FormData) => {
+    const formattedAmount = parseFloat(data.amount).toFixed(2);
+
     const transactionData = {
-      amount: data.amount,
+      amount: formattedAmount,
       categoryId: data.category,
       date: data.date,
       description: data.description,
@@ -84,6 +86,7 @@ function Modal({
 
     if (response.ok) {
       alert('Transaction added successfully');
+      reset();
       onClose();
       await fetchTransactions(new Date());
     } else {
@@ -98,6 +101,12 @@ function Modal({
       setValue('date', formattedDate);
     }
   };
+
+  useEffect(() => {
+    if (!isOpen) {
+      reset();
+    }
+  }, [isOpen, reset]);
 
   if (!isOpen) return null;
 
@@ -120,6 +129,7 @@ function Modal({
                 type='text'
                 placeholder='Description'
                 required
+                maxLength={50}
                 {...register('description')}
               />
               <Input

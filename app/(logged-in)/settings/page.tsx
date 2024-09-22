@@ -5,7 +5,9 @@ import PageComponents from './page.components';
 function Settings() {
   return (
     <>
-      <Typography variant='h1'>Settings</Typography>
+      <Typography variant='h1' className='px-2'>
+        Settings
+      </Typography>
       <PageComponents />
     </>
   );
