@@ -10,7 +10,8 @@ Budget Tracker is a user-friendly application designed to help you manage your f
 
 The dashboard offers a comprehensive overview of your financial situation, including:
 
-- **Total Monthly Balance**
+- **Total Current Balance**
+- **Monthly Balance**
 - **Monthly Income**
 - **Monthly Expenses**
 
@@ -46,7 +47,7 @@ In the settings page, you can view and edit your total current balance, giving y
 
 ### Account Creation
 
-During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account.
+During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account (but you can still edit it later in Settings page).
 
 ### Data Encryption
 All data related to transactions is securely encrypted, ensuring that your financial information remains confidential and protected.
