@@ -1,6 +1,6 @@
 # Budget Tracker
 
-A budget tracking application built with Next.js and TypeScript. This app allows users to manage their finances effectively, track expenses, and visualize their spending patterns.
+A budget tracking application built with Next.js and TypeScript. This app allows users to manage their finances effectively, track expenses, and visualize their spending patterns. You can try the live app [here](https://budget-tracker-amber.vercel.app).
 
 ## Project Description
 
@@ -10,7 +10,8 @@ Budget Tracker is a user-friendly application designed to help you manage your f
 
 The dashboard offers a comprehensive overview of your financial situation, including:
 
-- **Total Monthly Balance**
+- **Total Current Balance**
+- **Monthly Balance**
 - **Monthly Income**
 - **Monthly Expenses**
 
@@ -19,7 +20,7 @@ From here, you can easily add new income or expenses through intuitive buttons. 
 Additionally, the dashboard showcases:
 
 - **Recent Transactions**: A list displaying the date, description, and amount of your latest transactions.
-- **Visual Analytics**: Three dynamic graphs to help you understand your finances:
+- **Visual Analytics**: Three dynamic charts to help you understand your finances. You can hover over each of them to reveal more detailed information.
   - **Pie Chart**: Breakdown of income and expenses by category.
   - **Bar Chart**: Monthly history of income and expenses.
   - **Radial Chart**: Ratio of income to expenses.
@@ -46,7 +47,7 @@ In the settings page, you can view and edit your total current balance, giving y
 
 ### Account Creation
 
-During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account.
+During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account (but you can still edit your total balance later in Settings page).
 
 ### Data Encryption
 All data related to transactions is securely encrypted, ensuring that your financial information remains confidential and protected.
@@ -76,7 +77,7 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/smnraphael/budget-tracker.git
    cd budget-tracker
    ```
 
