@@ -19,10 +19,12 @@ export function PieChartComponent({ type, transactions }: PieChartProps) {
     (transaction) => transaction.category.type === type
   );
 
-  const data = filteredTransactions.map((transaction) => ({
-    category: transaction.category.name,
-    amount: transaction.amount,
-  }));
+  const data = filteredTransactions
+    .map((transaction) => ({
+      category: transaction.category.name,
+      amount: transaction.amount,
+    }))
+    .sort((a, b) => a.amount - b.amount);
 
   const totalTransactions = useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.amount, 0).toFixed(2);
