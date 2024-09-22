@@ -47,7 +47,7 @@ In the settings page, you can view and edit your total current balance, giving y
 
 ### Account Creation
 
-During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account (but you can still edit it later in Settings page).
+During the account creation process, you’ll have access to a dedicated page where you can set your initial balance. This page is only accessible while creating your account (but you can still edit your total balance later in Settings page).
 
 ### Data Encryption
 All data related to transactions is securely encrypted, ensuring that your financial information remains confidential and protected.
