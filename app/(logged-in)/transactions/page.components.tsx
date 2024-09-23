@@ -15,8 +15,12 @@ function PageComponents() {
 
   const fetchTransactions = async (month: Date) => {
     try {
-      const startOfMonth = new Date(month.getFullYear(), month.getMonth(), 1);
-      const endOfMonth = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+      const startOfMonth = new Date(
+        Date.UTC(month.getFullYear(), month.getMonth(), 1)
+      );
+      const endOfMonth = new Date(
+        Date.UTC(month.getFullYear(), month.getMonth() + 1, 0)
+      );
       const response = await fetch(
         `/api/transactions/get?start=${startOfMonth.toISOString()}&end=${endOfMonth.toISOString()}`
       );
