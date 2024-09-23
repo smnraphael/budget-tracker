@@ -41,8 +41,7 @@ The transactions page provides a detailed view of all your monthly transactions,
 - Amount
 
 You also have the option to delete any transaction, and navigation between months is made easy with arrow buttons.
-<img width="1000" alt="transactions" src="https://github.com/user-attachments/assets/802c77dc-377a-4cff-9579-048c5b087d26">
-
+<img width="1000" alt="Screenshot 2024-09-23 at 1 49 00 PM" src="https://github.com/user-attachments/assets/b0b0fe76-8715-46dd-aec2-e409a56ce0fb">
 
 ### 3. Settings
 
