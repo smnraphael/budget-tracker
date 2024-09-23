@@ -79,7 +79,7 @@ function PageComponents() {
   return (
     <div className='flex flex-col items-center gap-6 lg:mt-6'>
       <Typography variant='p'>
-        Current total balance:{' '}
+        Total current balance:{' '}
         <span className='font-bold'>{formatAmount(Number(balance))}€</span>
       </Typography>
 
