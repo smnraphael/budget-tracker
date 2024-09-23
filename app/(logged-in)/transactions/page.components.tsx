@@ -39,18 +39,23 @@ function PageComponents() {
   };
 
   const handleDelete = async (id: string) => {
-    const response = await fetch(`/api/transactions/${id}`, {
-      method: 'DELETE',
-    });
+    try {
+      const response = await fetch(`/api/transactions/${id}`, {
+        method: 'DELETE',
+      });
 
-    if (response.ok) {
+      if (!response.ok) {
+        const result = await response.json();
+        alert(result.message || 'Error deleting transaction');
+        return;
+      }
+
       alert('Transaction deleted successfully');
       setTransactions(
         transactions.filter((transaction) => transaction.id !== id)
       );
-    } else {
-      const result = await response.json();
-      alert(result.message || 'Error deleting transaction');
+    } catch (error) {
+      console.error('Failed to delete transaction', error);
     }
   };
 
@@ -69,7 +74,7 @@ function PageComponents() {
   useEffect(() => {
     setLoading(true);
     fetchTransactions(currentMonth);
-  }, [currentMonth]);
+  }, [currentMonth, transactions]);
 
   if (loading)
     return (
