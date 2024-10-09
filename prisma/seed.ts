@@ -22,6 +22,7 @@ async function main() {
       { name: '💇‍♀️ Personal Care', type: 'expense' },
       { name: '🏋️‍♂️ Sports', type: 'expense' },
       { name: '🧸 Childcare', type: 'expense' },
+      { name: '🗃️ Other', type: 'expense' },
       // Incomes
       { name: '💼 Salary', type: 'income' },
       { name: '📈 Business Income', type: 'income' },

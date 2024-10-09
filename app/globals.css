@@ -63,6 +63,7 @@
   --chart-care: 340, 50%, 75%; /* Light Soft Pink */
   --chart-sports: 100, 50%, 70%; /* Light Light Green */
   --chart-childcare: 50, 60%, 70%; /* Light Pale Yellow */
+  --chart-other-expense: 0, 0%, 70%; /* Light Neutral Gray */
 
   /* Wallet */
   --wallet: 210, 60%, 80%; /* Light Blue */
@@ -129,6 +130,7 @@
     --chart-care: 340, 60%, 50%; /* Soft Pink */
     --chart-sports: 100, 50%, 45%; /* Light Green */
     --chart-childcare: 50, 60%, 50%; /* Pale Yellow */
+    --chart-other-expense: 0, 0%, 60%;
 
     --income: 120, 50%, 45%; /* Medium Green */
     --expense: 0, 70%, 45%; /* Medium Red */

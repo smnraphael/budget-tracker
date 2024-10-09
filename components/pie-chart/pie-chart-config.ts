@@ -133,4 +133,8 @@ export const pieChartConfig: Config = {
     label: '🧸 Childcare',
     color: 'hsl(var(--chart-childcare))',
   },
+  '🗃️ Other': {
+    label: '🗃️ Other',
+    color: 'hsl(var(--chart-other-expense))',
+  },
 };
