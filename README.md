@@ -26,7 +26,10 @@ Additionally, the dashboard showcases:
   - **Radial Chart**: Ratio of income to expenses.
 
 You can navigate between months effortlessly using arrow buttons.
-<img width="1000" alt="dashboard-1" src="https://github.com/user-attachments/assets/726c2a6b-fa0c-46e3-96ee-e6794db71848">
+<img width="1000" alt="Screenshot 2024-09-23 at 1 20 10 PM" src="https://github.com/user-attachments/assets/d8d291bc-c14f-4a3e-b7ca-1139262c25f7">
+<img width="1000" alt="Screenshot 2024-09-23 at 1 14 24 PM" src="https://github.com/user-attachments/assets/0daf1583-a1d6-421c-b3d2-5d8cf5a4d337">
+<img width="1000" alt="Screenshot 2024-09-23 at 1 14 35 PM" src="https://github.com/user-attachments/assets/c4d85045-8d25-4a9d-b65b-26f43bdfc21d">
+
 
 ### 2. Transactions
 
@@ -38,8 +41,7 @@ The transactions page provides a detailed view of all your monthly transactions,
 - Amount
 
 You also have the option to delete any transaction, and navigation between months is made easy with arrow buttons.
-<img width="1000" alt="transactions" src="https://github.com/user-attachments/assets/802c77dc-377a-4cff-9579-048c5b087d26">
-
+<img width="1000" alt="Screenshot 2024-09-23 at 1 49 00 PM" src="https://github.com/user-attachments/assets/b0b0fe76-8715-46dd-aec2-e409a56ce0fb">
 
 ### 3. Settings
 
